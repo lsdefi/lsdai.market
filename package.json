@@ -1,0 +1,33 @@
+{
+  "name": "lsdai.market",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "webpack-dev-server --mode development --open",
+    "build": "webpack --mode production",
+    "test": "jest",
+    "lint": "eslint --cache --format codeframe --ext mjs,jsx,js src test"
+  },
+  "dependencies": {
+    "autoprefixer": "^9.6.1",
+    "prop-types": "^15",
+    "react": "^16",
+    "react-dom": "^16",
+    "react-hot-loader": "^4",
+    "tailwindcss": "^1.1.2"
+  },
+  "devDependencies": {
+    "@neutrinojs/airbnb": "^9.0.0-rc.3",
+    "@neutrinojs/jest": "^9.0.0-rc.3",
+    "@neutrinojs/react": "^9.0.0-rc.3",
+    "@neutrinojs/style-loader": "^9.0.0-rc.3",
+    "eslint": "^5",
+    "jest": "^24",
+    "neutrino": "^9.0.0-rc.3",
+    "postcss-loader": "^3.0.0",
+    "webpack": "^4",
+    "webpack-cli": "^3",
+    "webpack-dev-server": "^3"
+  }
+}
