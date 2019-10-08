@@ -1,9 +1,0 @@
-@import "./css/tailwind/base.css";
-
-@import "./css/tailwind/components.css";
-
-@import "./css/tailwind/utilities.css";
-
-.App {
-  padding: 20px;
-}
