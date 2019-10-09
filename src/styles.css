@@ -6,3 +6,52 @@
 
 /* Custom css */
 
+#App {
+  @apply h-screen;
+  font-family: 'Alike', serif;
+}
+
+img.landing-right {
+  @apply h-screen w-5/12 float-right;
+  object-fit: cover;
+  /* opacity: 0.1; */
+}
+
+#content {
+  @apply float-left p-56 w-7/12;
+}
+
+#content h4 {
+  @apply text-2xl;
+}
+
+#content p {
+  @apply text-lg pt-2 pb-6;
+}
+
+#logos {
+  @apply pt-32 pb-16;
+}
+
+#logos .logo {
+  @apply inline h-12;
+}
+
+#logos .name {
+  @apply px-4;
+}
+
+i {
+  @apply text-xl pr-4;
+}
+
+.circle-icon {
+  @apply rounded-full h-5 w-5 p-0 flex items-center justify-center bg-black text-white;
+  display: inline-block !important;
+}
+
+.circle-icon i {
+  @apply text-sm;
+  padding-left: 0.2rem;
+  vertical-align: 0.1rem;
+}
