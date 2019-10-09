@@ -7,7 +7,7 @@ import Twitter from './Twitter';
 const Content = () => (
   <div id="content">
     <div id="logos">
-      <img src="./assets/images/logo.svg" alt="logo" className="logo" />
+      <img src="./assets/images/logo.jpg" alt="logo" className="logo" />
       <img src="./assets/images/LSDai.svg" alt="LSDai" className="logo name" />
     </div>
 

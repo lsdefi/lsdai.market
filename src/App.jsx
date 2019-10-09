@@ -6,7 +6,7 @@ import Content from './components/Content';
 const App = () => (
   <div>
     <Content />
-    <img src="./assets/images/landing-bg-right.svg" alt="lsdai" className="landing-right" />
+    <img src="./assets/images/landing-bg-right.svg" alt="" className="landing-right" />
   </div>
 );
 
