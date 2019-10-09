@@ -9,16 +9,19 @@
 #App {
   @apply h-screen;
   font-family: 'Alike', serif;
+  position: fixed; /* Sit on top of the page content */
+  width: 100%; /* Full width (cover the whole page) */
+  height: 100%; /* Full height (cover the whole page) */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 100;
 }
 
-img.landing-right {
-  @apply h-screen w-5/12 float-right;
+.landing-right {
+  @apply hidden;
   object-fit: cover;
-  /* opacity: 0.1; */
-}
-
-#content {
-  @apply float-left p-56 w-7/12;
 }
 
 #content h4 {
@@ -29,8 +32,19 @@ img.landing-right {
   @apply text-lg pt-2 pb-6;
 }
 
+.content-bg-underlay {
+  position: fixed; /* Sit on top of the page content */
+  width: 100%; /* Full width (cover the whole page) */
+  height: 100%; /* Full height (cover the whole page) */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 0;
+}
+
 #logos {
-  @apply pt-32 pb-16;
+  @apply pt-16 pb-16;
 }
 
 #logos .logo {
