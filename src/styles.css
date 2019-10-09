@@ -6,3 +6,59 @@
 
 /* Custom css */
 
+#App {
+  @apply w-full font-alike;
+}
+
+.container {
+  @apply w-240 text-left inline-block h-full;
+}
+
+.header {
+  @apply text-center h-40;
+}
+
+.header .logos {
+  @apply left-0 absolute -mt-3 top-1/2;
+}
+
+.header .logos .logo {
+  @apply inline h-6;
+}
+
+.header .logos .name {
+  @apply h-6 pl-2;
+}
+
+.header .wallet {
+  @apply absolute top-1/2 right-0;
+  @apply font-lato font-bold uppercase py-3 px-4 bg-transparent border border-black;
+  @apply leading-8 text-sm;
+  margin-top: -1.8rem;
+}
+
+.header .wallet .metamask {
+  @apply h-5 inline-block pr-3;
+  margin-top: -0.175rem
+}
+
+.hero {
+  @apply bg-dark h-144 text-center text-white;
+}
+
+
+
+i {
+  @apply text-xl pr-4;
+}
+
+.circle-icon {
+  @apply rounded-full h-5 w-5 p-0 flex items-center justify-center bg-black text-white;
+  display: inline-block !important;
+}
+
+.circle-icon i {
+  @apply text-sm;
+  padding-left: 0.2rem;
+  vertical-align: 0.1rem;
+}

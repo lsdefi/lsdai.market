@@ -99,3 +99,6 @@ public
 
 # webpack build directory
 dist
+
+# VIM cache files
+*.swp
