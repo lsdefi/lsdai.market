@@ -8,7 +8,7 @@ import Press from './components/Press';
 import Footer from './components/Footer';
 
 const App = () => (
-  <div>
+  <div className="app">
     <Header />
     <Hero />
     <Team />
