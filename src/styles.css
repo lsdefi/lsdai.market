@@ -15,7 +15,7 @@ h1{
 }
 
 h2{
-  @apply text-xl font-extrabold;
+  @apply text-xl font-bold font-lato;
 }
 
 .container {
@@ -76,6 +76,9 @@ i {
 .team .member img{
   @apply w-full mx-auto mb-6 block max-w-24;
 }
+.team .member p{
+  @apply text-sm mt-3;
+}
 @screen md {
   .team .member {
     @apply w-1/2 flex flex-no-wrap text-left pr-24;
@@ -99,7 +102,7 @@ i {
   @apply h-8 mr-3
 }
 .press p{
-  @apply my-5;
+  @apply my-5 text-sm;
 }
 .press ul>li{
   @apply mb-2;
