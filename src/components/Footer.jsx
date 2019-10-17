@@ -9,8 +9,8 @@ const Footer = () => (
       <img src="../assets/images/logo-with-writing-white.png" alt="lsdai logo" />
       <p>
         Disclaimer: Money legos are dangerous when stacked incorrectly.
-        LSDai does not endorse using any substance which will cause your vision to become impaired or
-        otherwise prevent you from operating heavy machinery / Metamask.
+        LSDai does not endorse using any substance which will cause your vision to become impaired
+        or otherwise prevent you from operating heavy machinery / Metamask.
         Nothing hearin should be taken as trading advice, life advice, or even good advice.
         Use at your own risk.
       </p>
