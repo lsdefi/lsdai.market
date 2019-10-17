@@ -23,8 +23,10 @@
   "devDependencies": {
     "@babel/cli": "^7.6.3",
     "@babel/core": "^7.6.3",
+    "@babel/plugin-transform-runtime": "^7.6.2",
     "@babel/preset-env": "^7.6.3",
     "@babel/preset-react": "^7.6.3",
+    "@babel/runtime": "^7.6.3",
     "autoprefixer": "^9.6.4",
     "babel-eslint": "^10.0.3",
     "babel-loader": "^8.0.6",
@@ -49,7 +51,11 @@
     "webpack-dev-server": "^3.8.2"
   },
   "dependencies": {
+    "bignumber.js": "^9.0.0",
+    "highcharts": "^7.2.0",
+    "prop-types": "^15.7.2",
     "react": "^16.10.2",
-    "react-dom": "^16.10.2"
+    "react-dom": "^16.10.2",
+    "strftime": "^0.10.0"
   }
 }

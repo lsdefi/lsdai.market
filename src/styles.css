@@ -19,7 +19,7 @@ h2{
 }
 
 .container {
-  @apply max-w-240 text-left inline-block h-full px-4;
+  @apply max-w-240 text-left inline-block h-full px-4 mx-auto;
 }
 .header .container{
   @apply flex flex-no-wrap justify-between items-center
@@ -47,18 +47,27 @@ h2{
   @apply bg-dark h-144 text-white;
 }
 
-i {
-  @apply text-xl pr-4;
+#rate-history {
+  @apply w-120 h-120 my-auto;
 }
-.circle-icon {
-  @apply rounded-full h-5 w-5 p-0 flex items-center justify-center bg-black text-white;
-  display: inline-block !important;
+.hero .chart-container{
+  @apply mt-40;
 }
-.circle-icon i {
-  @apply text-sm;
-  padding-left: 0.2rem;
-  vertical-align: 0.1rem;
+.hero .chart-title, .hero .subtitle{
+  @apply absolute ml-4;
+  z-index: 999
 }
+.hero .chart-title{
+  top:8px;
+}
+.hero .subtitle{
+  @apply text-5xl;
+  bottom: 40px;
+}
+i:hover{
+  @apply text-gold;
+}
+
 .team, .press {
   @apply py-32;
 }
@@ -66,10 +75,16 @@ i {
   @apply flex flex-row flex-wrap w-full mt-6;
 }
 .team .member{
-  @apply w-full pr-0 pt-10 text-center;
+  @apply pr-0 pt-10 text-center;
 }
-.team .member img{
-  @apply w-full mx-auto mb-6 block max-w-24;
+.team .member .social{
+  @apply mx-auto mb-6 block;
+}
+.team .member .social img{
+  @apply ;
+}
+.team .member .social div{
+  @apply mt-2 flex flex-wrap justify-between;
 }
 .team .member p{
   @apply text-sm mt-3;
@@ -78,8 +93,9 @@ i {
   .team .member {
     @apply w-1/2 flex flex-no-wrap text-left pr-24;
   }
-  .team .member img{
-    @apply inline w-20 h-20 p-0 mr-6;
+  .team .member .social{
+    @apply inline p-0 mr-6;
+    @apply !important;
   }
   .team .member > div{
     @apply inline-block;
@@ -117,4 +133,10 @@ i {
 }
 .footer .container > div {
   @apply mt-8;
+}
+.footer .social-footer{
+  @apply text-right text-2xl
+}
+.footer .social-footer> *{
+  @apply ml-3
 }
