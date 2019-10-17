@@ -46,7 +46,9 @@
   @apply bg-dark h-144 text-center text-white;
 }
 
-
+#rate-history {
+  @apply w-120 h-120;
+}
 
 i {
   @apply text-xl pr-4;

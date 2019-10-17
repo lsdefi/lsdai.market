@@ -1,9 +1,11 @@
 import React from 'react';
 
+import RateHistory from './RateHistory';
+
 const Hero = () => (
   <div className="hero">
     <div className="container">
-      Hero here
+      <RateHistory />
     </div>
   </div>
 );
