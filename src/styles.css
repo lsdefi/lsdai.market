@@ -10,40 +10,41 @@
   @apply w-full font-alike;
 }
 
+h1{
+  @apply text-3xl font-black;
+}
+
+h2{
+  @apply text-xl font-extrabold;
+}
+
 .container {
-  @apply w-240 text-left inline-block h-full;
+  @apply max-w-240 text-left inline-block h-full px-4;
 }
-
+.header .container{
+  @apply flex flex-no-wrap justify-between items-center
+}
+.app > div{
+  @apply text-center;
+}
 .header {
-  @apply text-center h-40;
+  @apply py-16;
 }
-
-.header .logos {
-  @apply left-0 absolute -mt-3 top-1/2;
-}
-
-.header .logos .logo {
+.header .container > img{
   @apply inline h-6;
 }
 
-.header .logos .name {
-  @apply h-6 pl-2;
-}
-
 .header .wallet {
-  @apply absolute top-1/2 right-0;
   @apply font-lato font-bold uppercase py-3 px-4 bg-transparent border border-black;
   @apply leading-8 text-sm;
-  margin-top: -1.8rem;
 }
 
 .header .wallet .metamask {
   @apply h-5 inline-block pr-3;
-  margin-top: -0.175rem
 }
 
 .hero {
-  @apply bg-dark h-144 text-center text-white;
+  @apply bg-dark h-144 text-white;
 }
 
 #rate-history {
@@ -58,9 +59,64 @@ i {
   @apply rounded-full h-5 w-5 p-0 flex items-center justify-center bg-black text-white;
   display: inline-block !important;
 }
-
 .circle-icon i {
   @apply text-sm;
   padding-left: 0.2rem;
   vertical-align: 0.1rem;
+}
+.team, .press {
+  @apply py-32;
+}
+.team .container > div{
+  @apply flex flex-row flex-wrap w-full mt-6;
+}
+.team .member{
+  @apply w-full pr-0 pt-10 text-center;
+}
+.team .member img{
+  @apply w-full mx-auto mb-6 block max-w-24;
+}
+@screen md {
+  .team .member {
+    @apply w-1/2 flex flex-no-wrap text-left pr-24;
+  }
+  .team .member img{
+    @apply inline w-20 h-20 p-0 mr-6;
+  }
+  .team .member > div{
+    @apply inline-block;
+  }
+}
+
+
+.press {
+  @apply bg-grey text-black;
+}
+.press h1, .press h1>img{
+  @apply inline;
+}
+.press h1 img{
+  @apply h-8 mr-3
+}
+.press p{
+  @apply my-5;
+}
+.press ul>li{
+  @apply mb-2;
+}
+.press ul img{
+  @apply w-4 mr-2;
+}
+.press ul img, .press ul span{
+  @apply inline;
+}
+
+.footer{
+  @apply py-24 text-xs bg-dark text-white;
+}
+.footer .container > img{
+  @apply w-24 my-4
+}
+.footer .container > div {
+  @apply mt-8;
 }

@@ -2,11 +2,8 @@ import React from 'react';
 
 const Header = () => (
   <div className="header">
-    <div className="container relative">
-      <div className="logos">
-        <img src="./assets/images/logo.jpg" alt="logo" className="logo" />
-        <img src="./assets/images/LSDai.svg" alt="LSDai" className="logo name" />
-      </div>
+    <div className="container">
+      <img src="./assets/images/logo-with-writing.jpg" alt="logo"/>
 
       <button className="wallet" type="button">
         <img src="./assets/images/metamask-logo.png" alt="metamask" className="metamask" />
