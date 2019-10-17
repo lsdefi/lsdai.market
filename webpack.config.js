@@ -1,3 +1,4 @@
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const path = require('path');
@@ -8,12 +9,23 @@ module.exports = {
     compress: true,
     port: 5000,
   },
+  entry: './src/index.jsx',
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /\.(js|jsx)$/,
         exclude: /node_modules/,
-        use: ['babel-loader', 'eslint-loader'],
+        use: [
+          {
+            loader: 'babel-loader',
+            options: {
+              presets: ['@babel/preset-env'],
+            },
+          },
+          {
+            loader: 'eslint-loader',
+          },
+        ],
       },
       {
         test: /\.css$/,
@@ -23,9 +35,15 @@ module.exports = {
           'postcss-loader',
         ],
       },
-    ]
+    ],
   },
   plugins: [
+    new CopyWebpackPlugin([
+      {
+        from: 'src/assets',
+        to: 'assets'
+      },
+    ]),
     new MiniCssExtractPlugin({
       filename: 'styles.css',
       chunkFilename: 'styles.css'
@@ -35,4 +53,7 @@ module.exports = {
       filename: './index.html'
     }),
   ],
+  resolve: {
+    extensions: ['.js', '.jsx'],
+  },
 };
