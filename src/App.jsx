@@ -7,13 +7,13 @@ import Team from './components/Team';
 import Press from './components/Press';
 import Footer from './components/Footer';
 
-const App = () => (
+const App = (props) => (
   <div className="app">
-    <Header />
-    <Hero />
-    <Team />
-    <Press />
-    <Footer />
+    <Header {...props} />
+    <Hero {...props} />
+    <Team {...props} />
+    <Press {...props} />
+    <Footer {...props} />
   </div>
 );
 
