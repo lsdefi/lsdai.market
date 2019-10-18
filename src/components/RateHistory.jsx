@@ -107,28 +107,26 @@ class RateHistory extends React.Component {
           color: '#e8c538',
           lineWidth: 3,
           states: {
-              hover: {
-                  enabled: true,
-                  lineWidth: 4
-              }
-          }
-        }
+            hover: {
+              enabled: true,
+              lineWidth: 4,
+            },
+          },
+        },
       },
       series: [{ data, type: 'spline' }],
       title: { text: '' },
-      legend: {
-        enabled: false
-      },
+      legend: { enabled: false },
       xAxis: { type: 'datetime' },
       yAxis: {
         max: 16,
-        gridLineColor: "#7a7a7a",
-        title: {enabled:false},
+        gridLineColor: '#7a7a7a',
+        title: { enabled: false },
         labels: {
-          formatter: function() {
-            return this.value + '%';
-          }
-        }
+          formatter: function formatter() {
+            return `${this.value}%`;
+          },
+        },
       },
     });
   }
@@ -147,12 +145,33 @@ class RateHistory extends React.Component {
 
   render() {
     const { rateChange, supplyRate } = this.state;
+    let rateChangeArrowClass = 'far fa-angle-up';
+    let rateChangeClass = 'text-green text-2xl';
+    let rateChangeValue = rateChange;
+
+    if (rateChange < 0) {
+      rateChangeArrowClass = 'far fa-angle-down';
+      rateChangeClass = 'text-red text-2xl';
+      rateChangeValue = 1 - rateChangeValue;
+    }
 
     return (
       <div className="chart-container">
         <div className="chart-title">
-          <span className="text-5xl">{ supplyRate }</span><span className="text-red text-2xl">▼ {rateChange}%</span>
-          <br /><span className="text-white text-3xl leading-none">DAI Lending Rate<br />on Compound.finance</span>
+          <span>
+            {supplyRate}
+            %
+          </span>
+          <span className={rateChangeClass}>
+            <i className={rateChangeArrowClass} />
+            {rateChangeValue}
+          </span>
+          <br />
+          <span className="text-white text-3xl leading-none">
+            DAI Lending Rate
+            <br />
+            on Compound.finance
+          </span>
         </div>
         <div id="rate-history" />
         <div className="subtitle">

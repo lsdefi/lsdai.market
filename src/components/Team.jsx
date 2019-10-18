@@ -1,9 +1,4 @@
 import React from 'react';
-import memberList from './MemberList';
-
-/*const members = memberList.map(
-  ({ name, img, bio }) => (<Member name={name} img={img} bio={bio} />),
-);*/
 
 import TeamMember from './TeamMember';
 

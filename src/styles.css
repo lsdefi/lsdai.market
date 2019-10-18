@@ -21,11 +21,27 @@ h2{
 .container {
   @apply max-w-240 text-left inline-block h-full px-4 mx-auto;
 }
-.header .container{
-  @apply flex flex-no-wrap justify-between items-center
-}
+
 .app > div{
   @apply text-center;
+}
+
+.flip {
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+
+i:hover{
+  @apply text-gold;
+}
+
+/* Header Specific */
+
+.header .container{
+  @apply flex flex-no-wrap justify-between items-center
 }
 .header {
   @apply py-16;
@@ -33,22 +49,18 @@ h2{
 .header .container > img{
   @apply inline h-6;
 }
-
 .header .wallet {
   @apply font-lato font-bold uppercase py-3 px-4 bg-transparent border border-black;
   @apply leading-8 text-sm;
 }
-
 .header .wallet .metamask {
   @apply h-5 inline-block pr-3;
 }
 
+/* Hero Specific */
+
 .hero {
   @apply bg-dark h-144 text-white;
-}
-
-#rate-history {
-  @apply w-120 h-120 my-auto;
 }
 .hero .chart-container{
   @apply mt-40;
@@ -60,15 +72,23 @@ h2{
 .hero .chart-title{
   top:8px;
 }
+.hero .chart-title span:first-child {
+  @apply text-5xl pr-2;
+}
+.hero .chart-title i {
+  @apply pr-1;
+}
+.hero #rate-history {
+  @apply w-120 h-120 my-auto;
+}
 .hero .subtitle{
   @apply text-5xl;
   bottom: 40px;
 }
-i:hover{
-  @apply text-gold;
-}
 
-.team, .press {
+/* Team Specific */
+
+.team {
   @apply py-32;
 }
 .team .container > div{
@@ -89,6 +109,7 @@ i:hover{
 .team .member p{
   @apply text-sm mt-3;
 }
+
 @screen md {
   .team .member {
     @apply w-1/2 flex flex-no-wrap text-left pr-24;
@@ -102,9 +123,10 @@ i:hover{
   }
 }
 
+/* Press Specific */
 
 .press {
-  @apply bg-grey text-black;
+  @apply bg-grey text-black py-32;
 }
 .press h1, .press h1>img{
   @apply inline;
@@ -124,6 +146,8 @@ i:hover{
 .press ul img, .press ul span{
   @apply inline;
 }
+
+/* Footer Specific */
 
 .footer{
   @apply py-24 text-xs bg-dark text-white;
