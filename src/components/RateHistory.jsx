@@ -11,11 +11,11 @@ class RateHistory extends React.Component {
     this.apiUrl = 'https://api.compound.finance/api/v2';
     this.asset = '0xf5dce57282a584d2746faf1593d3121fcac444dc';
     this.cToken = 'ctoken';
-    this.interval = 60 * 60 * 24 * 7;
+    this.interval = 60 * 60 * 24;
     this.marketHistory = 'market_history/graph';
     this.max = Math.round((new Date()).valueOf() / 1000);
-    this.weeks = 22;
-    this.min = this.max - this.interval * this.weeks;
+    this.days = 22 * 7;
+    this.min = this.max - this.interval * this.days;
 
     this.state = {
       rateChange: 0,
@@ -48,11 +48,11 @@ class RateHistory extends React.Component {
       marketHistory,
       max,
       min,
-      weeks,
+      days,
     } = this;
 
     const responses = await Promise.all([
-      fetch(`${apiUrl}/${marketHistory}?asset=${asset}&min_block_timestamp=${min}&max_block_timestamp=${max}&num_buckets=${weeks}`),
+      fetch(`${apiUrl}/${marketHistory}?asset=${asset}&min_block_timestamp=${min}&max_block_timestamp=${max}&num_buckets=${days}`),
       fetch(`${apiUrl}/${cToken}?addresses[]=${asset}`),
     ]);
 
@@ -79,10 +79,10 @@ class RateHistory extends React.Component {
 
   updateHistoricalRates(rates) {
     const data = [];
-    const { interval, min, weeks } = this;
+    const { interval, min, days } = this;
     let i = 0;
 
-    for (; i < weeks; i += 1) {
+    for (; i < days; i += 1) {
       data.push(rates[i]);
     }
 
@@ -97,6 +97,7 @@ class RateHistory extends React.Component {
     this.chart = Highcharts.chart('rate-history', {
       chart: {
         height: '300',
+        width: '450',
         type: 'line',
         backgroundColor: '#0b0b0b',
       },
@@ -133,10 +134,10 @@ class RateHistory extends React.Component {
 
   updateSupplyRate({ rate }) {
     const { gun } = this.props;
-    const { weeks } = this;
+    const { days } = this;
 
     gun.get('historicalRates').once((rates) => {
-      const last = rates[weeks - 2] || rate;
+      const last = rates[days - 2] || rate;
       const rateChange = BigNumber(rate).minus(last).toNumber();
 
       this.setState({ rateChange, supplyRate: rate });
