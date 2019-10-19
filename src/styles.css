@@ -68,7 +68,7 @@ i:hover{
 /* Hero Specific */
 
 .hero {
-  @apply bg-dark text-white pb-8;
+  @apply bg-dark text-white;
 }
 .hero .container{
   @apply flex flex-row flex-wrap;
