@@ -2,6 +2,7 @@ import BigNumber from 'bignumber.js';
 import Gun from 'gun/gun';
 import PropTypes from 'prop-types';
 import React from 'react';
+import ReactNotification from 'react-notifications-component';
 import Web3Connect from 'web3connect';
 import { ethers as eth } from 'ethers';
 
@@ -14,8 +15,10 @@ import Press from './components/Press';
 import Footer from './components/Footer';
 
 import Airswap from './airswap';
+import animate from './utils/animate';
 import balance from './utils/balance';
 import erc20 from './abi/erc20';
+import notify from './utils/notify';
 
 class App extends React.Component {
   constructor(props) {
@@ -182,6 +185,8 @@ class App extends React.Component {
       balance(shortD, address),
     ]);
 
+    await animate('.wallet span', 'fadeOut', 'fastest');
+
     this.setState({
       address,
       cDai,
@@ -194,12 +199,20 @@ class App extends React.Component {
       shortD,
       shortDBalance,
       signer,
-    }, () => {
+    }, async () => {
+      notify({
+        title: 'Connected to Web3!',
+        message: `Using wallet: ${address}`,
+      });
+
       if (this.airswap) {
         this.airswap.stop();
       }
 
       this.airswap = new Airswap({ ...props, ...this.state });
+
+      animate('.wallet span', 'fadeIn', 'faster');
+      animate('.metamask', 'tada');
     });
   }
 
@@ -216,6 +229,7 @@ class App extends React.Component {
 
     return (
       <div className="app">
+        <ReactNotification />
         <Header {...props} {...state} />
         <Hero {...props} {...state} {...orderMethods} />
         <Team {...props} {...state} />

@@ -6,8 +6,15 @@
 
 @import "~animate.css/source/_base.css";
 @import "~animate.css/source/attention_seekers/pulse.css";
+@import "~animate.css/source/attention_seekers/tada.css";
 @import "~animate.css/source/fading_entrances/fadeIn.css";
 @import "~animate.css/source/fading_exits/fadeOut.css";
+
+@import "~react-notifications-component/dist/theme.css";
+
+.animated.fastest {
+  animation-duration: 250ms;
+}
 
 /* Custom css */
 

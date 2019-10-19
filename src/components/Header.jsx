@@ -26,7 +26,7 @@ class Header extends React.Component {
           <img src="./assets/images/logo-with-writing.jpg" alt="logo" />
           <button className="wallet" onClick={this.connectWallet} type="button">
             <img src="./assets/images/eth-logo.png" alt="ethereum" className="metamask" />
-            {address.length > 0 ? 'My Balance' : 'Connect'}
+            <span>{address.length > 0 ? 'My Balance' : 'Connect'}</span>
           </button>
         </div>
       </div>

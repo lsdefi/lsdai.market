@@ -123,7 +123,7 @@ class RateHistory extends React.Component {
       xAxis: {
         type: 'datetime',
         lineColor: '#4a4a4a',
-        lineWidth: 1
+        lineWidth: 1,
       },
       yAxis: {
         max: 16,
@@ -187,7 +187,7 @@ class RateHistory extends React.Component {
           <div className="subtitle">
             Get High on Interest
           </div>
-      </div>
+        </div>
       </div>
     );
   }

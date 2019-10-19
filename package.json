@@ -63,6 +63,7 @@
     "prop-types": "^15.7.2",
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
+    "react-notifications-component": "^2.1.0",
     "react-tabs": "^3.0.0",
     "squarelink": "^1.1.2",
     "strftime": "^0.10.0",

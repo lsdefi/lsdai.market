@@ -1,17 +1,15 @@
-const animate = (element, animationName) => {
-  let handleAnimationEnd;
+const animate = (element, ...animationNames) => new Promise((resolve) => {
+  const node = document.querySelector(element);
+  const classes = ['animated', ...animationNames];
 
-  handleAnimationEnd = () => {
-    node.classList.remove('animated', animationName);
+  const handleAnimationEnd = () => {
+    node.classList.remove(...classes);
     node.removeEventListener('animationend', handleAnimationEnd);
     resolve();
   };
 
-  return new Promise((resolve) => {
-    const node = document.querySelector(element);
-    node.classList.add('animated', animationName);
-    node.addEventListener('animationend', handleAnimationEnd);
-  });
-};
+  node.classList.add(...classes);
+  node.addEventListener('animationend', handleAnimationEnd);
+});
 
 export default animate;
