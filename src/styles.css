@@ -4,6 +4,11 @@
 
 @tailwind utilities;
 
+@import "~animate.css/source/_base.css";
+@import "~animate.css/source/attention_seekers/pulse.css";
+@import "~animate.css/source/fading_entrances/fadeIn.css";
+@import "~animate.css/source/fading_exits/fadeOut.css";
+
 /* Custom css */
 
 #App {
