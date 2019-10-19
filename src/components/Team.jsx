@@ -1,6 +1,6 @@
 import React from 'react';
 
-import TeamMember from './TeamMember';
+import TeamMember from './team/TeamMember';
 
 class Team extends React.Component {
   constructor() {

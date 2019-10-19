@@ -1,10 +1,10 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import Github from './team/Github';
-import Keybase from './team/Keybase';
-import Linkedin from './team/Linkedin';
-import Twitter from './team/Twitter';
+import Github from './Github';
+import Keybase from './Keybase';
+import Linkedin from './Linkedin';
+import Twitter from './Twitter';
 
 const TeamMember = (props) => {
   const { teamMember } = props;

@@ -98,8 +98,8 @@ class RateHistory extends React.Component {
 
     this.chart = Highcharts.chart('rate-history', {
       chart: {
-        height: '300',
-        width: '450',
+        height: '220',
+        width: '434',
         type: 'line',
         backgroundColor: '#0b0b0b',
       },
@@ -120,10 +120,16 @@ class RateHistory extends React.Component {
       series: [{ data, type: 'spline' }],
       title: { text: '' },
       legend: { enabled: false },
-      xAxis: { type: 'datetime' },
+      xAxis: {
+        type: 'datetime',
+        lineColor: '#4a4a4a',
+        lineWidth: 1
+      },
       yAxis: {
         max: 16,
-        gridLineColor: '#7a7a7a',
+        lineColor: '#4a4a4a',
+        gridLineColor: '#4a4a4a',
+        tickColor: '#4a4a4a',
         title: { enabled: false },
         labels: {
           formatter: function formatter() {
@@ -149,37 +155,39 @@ class RateHistory extends React.Component {
   render() {
     const { rateChange, supplyRate } = this.state;
     let rateChangeArrowClass = 'far fa-angle-up';
-    let rateChangeClass = 'text-green text-2xl';
+    let rateChangeClass = 'text-green text-base';
     let rateChangeValue = rateChange;
 
     if (rateChange < 0) {
       rateChangeArrowClass = 'far fa-angle-down';
-      rateChangeClass = 'text-red text-2xl';
+      rateChangeClass = 'text-red text-base';
       rateChangeValue = 1 - rateChangeValue;
     }
 
     return (
       <div className="chart-container">
-        <div className="chart-title">
-          <span>
-            {supplyRate}
-            %
-          </span>
-          <span className={rateChangeClass}>
-            <i className={rateChangeArrowClass} />
-            {rateChangeValue}
-          </span>
-          <br />
-          <span className="text-white text-3xl leading-none">
-            DAI Lending Rate
+        <div>
+          <div className="chart-title">
+            <span>
+              {supplyRate}
+              %
+            </span>
+            <span className={rateChangeClass}>
+              <i className={rateChangeArrowClass} />
+              {rateChangeValue}
+            </span>
             <br />
-            on Compound.finance
-          </span>
-        </div>
-        <div id="rate-history" />
-        <div className="subtitle">
-          Get High on Interest
-        </div>
+            <span className="text-white text-lg leading-none">
+              DAI Lending Rate
+              <br />
+              on Compound.finance
+            </span>
+          </div>
+          <div id="rate-history" />
+          <div className="subtitle">
+            Get High on Interest
+          </div>
+      </div>
       </div>
     );
   }

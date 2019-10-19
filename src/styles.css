@@ -74,39 +74,33 @@ i:hover{
   @apply flex flex-row flex-wrap;
 }
 .hero .chart-container{
-  @apply max-h-full mt-4 mx-auto;
-}
-.hero .chart-title, .hero .subtitle{
-  @apply ml-3;
-  z-index: 999
+  @apply max-h-full mt-4 mx-auto flex items-center;
 }
 .hero .chart-title span:first-child {
-  @apply text-5xl pr-2;
+  @apply text-2xl pr-2;
 }
 .hero .chart-title i {
   @apply pr-1;
 }
 .hero #rate-history {
   @apply w-120 my-auto;
+  margin-left: -11px;
 }
 .hero .subtitle{
   @apply text-3xl;
 }
 @screen lg{
-  .hero {
-    color: red !important;
-   }
   .hero .chart-container{
-    @apply w-1/2 mx-0;
+    @apply w-1/2 mx-0 pr-12;
   }
   .hero .container {
     @apply pb-0 flex-no-wrap;
   }
   .hero .tab-container{
-    @apply my-auto px-4 py-8 w-1/2;
+    @apply my-auto py-8 w-1/2 pl-12;
   }
   .hero .subtitle{
-    @apply text-5xl;
+    @apply text-4xl;
   }
 }
 .hero .tab-container{
@@ -222,7 +216,10 @@ input[type="radio"]{
 
 @screen md {
   .team .member {
-    @apply w-1/2 flex flex-no-wrap text-left pr-24;
+    @apply w-1/2 flex flex-no-wrap text-left pr-12;
+  }
+  .team .member:nth-child(2n + 0){
+    @apply pl-12 pr-0;
   }
   .team .member .social{
     @apply inline p-0 mr-6;
