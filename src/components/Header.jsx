@@ -9,13 +9,6 @@ class Header extends React.Component {
     this.connectWallet = this.connectWallet.bind(this);
   }
 
-  componentDidUpdate() {
-    const { props } = this;
-    const { address } = props;
-
-    console.log('ADDRESS', address);
-  }
-
   connectWallet(evt) {
     evt.preventDefault();
 

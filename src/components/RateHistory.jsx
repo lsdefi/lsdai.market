@@ -59,6 +59,7 @@ class RateHistory extends React.Component {
     try {
       const rateData = await responses[0].json();
       const cTokenData = await responses[1].json();
+      const exchangeRate = cTokenData.cToken[0].exchange_rate.value;
       const supplyRate = cTokenData.cToken[0].supply_rate.value;
 
       const { gun } = this.props;
@@ -68,6 +69,7 @@ class RateHistory extends React.Component {
         historicalRates[index] = BigNumber(rate).multipliedBy(100).dp(2).toNumber();
       });
 
+      gun.get('exchangeRate').put({ rate: exchangeRate });
       gun.get('historicalRates').put(historicalRates);
       gun.get('supplyRate').put({
         rate: BigNumber(supplyRate).multipliedBy(100).dp(2).toNumber(),
@@ -137,7 +139,7 @@ class RateHistory extends React.Component {
     const { days } = this;
 
     gun.get('historicalRates').once((rates) => {
-      const last = rates[days - 2] || rate;
+      const last = rates[days - 1] || rate;
       const rateChange = BigNumber(rate).minus(last).toNumber();
 
       this.setState({ rateChange, supplyRate: rate });
