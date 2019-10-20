@@ -12,7 +12,7 @@ import Header from './components/Header';
 import Drawer from './components/Drawer';
 import Hero from './components/Hero';
 import Team from './components/Team';
-import Press from './components/Press';
+// import Press from './components/Press';
 import Footer from './components/Footer';
 
 import Airswap from './airswap';
@@ -395,7 +395,6 @@ class App extends React.Component {
         <Drawer {...props} {...state} {...orderMethods} />
         <Hero {...props} {...state} {...orderMethods} />
         <Team {...props} {...state} />
-        <Press {...props} {...state} />
         <Footer {...props} {...state} />
       </div>
     );
