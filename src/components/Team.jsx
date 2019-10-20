@@ -34,6 +34,7 @@ class Team extends React.Component {
           name: 'David Leitart',
           bio: 'Works as a financial analyst at the CryptoPosition Investment Fund, the first crypto fund in Hungary. In tandem, he heads his outlet Cryptoberg Research, maintaining a comprehensive perspective on the blockchain scene, and analyzing projects in-depth. ',
           img: './assets/images/team/david.jpg',
+          facebook: 'davidiens',
         },
         {
           name: 'Zhicheng Miao',
