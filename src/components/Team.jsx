@@ -31,10 +31,11 @@ class Team extends React.Component {
           linkedin: 'francescogeorgerenzi',
         },
         {
-          name: 'David Leitart',
-          bio: 'Works as a financial analyst at the CryptoPosition Investment Fund, the first crypto fund in Hungary. In tandem, he heads his outlet Cryptoberg Research, maintaining a comprehensive perspective on the blockchain scene, and analyzing projects in-depth. ',
+          name: 'David Leitert',
+          bio: 'Works as a financial analyst at the CryptoPosition Investment Fund. In tandem, he heads his outlet Cryptoberg Research, maintaining a comprehensive perspective on the blockchain scene, and analyzing projects in-depth. ',
           img: './assets/images/team/david.jpg',
           facebook: 'davidiens',
+          linkedin: 'davidlxo',
         },
         {
           name: 'Zhicheng Miao',
