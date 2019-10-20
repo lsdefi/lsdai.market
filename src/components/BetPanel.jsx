@@ -2,6 +2,8 @@ import BigNumber from 'bignumber.js';
 import PropTypes from 'prop-types';
 import React from 'react';
 
+import InfoBox from './InfoBox';
+
 class BetPanel extends React.Component {
   constructor(props) {
     super(props);
@@ -45,6 +47,11 @@ class BetPanel extends React.Component {
 
     return (
       <div>
+        <InfoBox>
+          The price of the tokens only moves between 5% and 20%. If the supply rate is 5% or below,
+          LongD is worth nothing. If the price is 20% or above, ShortD is worth nothing.
+        </InfoBox>
+
         <p className="font-bold font-2xl">I think the cDai lending rate on Compound will go:</p>
         <div className="up-down">
           <img
@@ -82,13 +89,16 @@ class BetPanel extends React.Component {
               name="profit"
               required
               minLength="1"
-              maxLength="2"
+              maxLength="4"
               size="3"
               onBlur={updateDaiFallback}
               onChange={updateDai}
               value={dai}
             />
-            <span>DAI for every additional percentage point of increase/decrease in rate.</span>
+            <span>
+              DAI for every percentage point the cDai supply rate
+              {direction === 'up' ? ' increases.' : ' decreases.'}
+            </span>
           </div>
           <div className="w-full text-right">
             <button type="button" className="button-black" onClick={submit}>

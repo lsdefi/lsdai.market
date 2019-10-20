@@ -40,6 +40,8 @@ class App extends React.Component {
 
     this.betOrder = this.betOrder.bind(this);
     this.hedgeOrder = this.hedgeOrder.bind(this);
+    this.sellOrder = this.sellOrder.bind(this);
+    this.updateBalances = this.updateBalances.bind(this);
 
     window.App = this;
   }
@@ -107,19 +109,29 @@ class App extends React.Component {
     await this.airswap.authenticate();
   }
 
-  async executeOrder(order) {
+  async executeOrder(order, type = 'buy') {
     const expiration = BigNumber(order.expiration).multipliedBy(1000);
     const now = BigNumber((new Date()).valueOf());
     const timeout = expiration.minus(now).toNumber();
-    const cost = BigNumber(order.takerAmount).dividedBy(10 ** 18).dp(2).toFixed();
-    const humanAmount = BigNumber(order.makerAmount).dividedBy(10 ** 5).toFixed();
+    let cost;
+    let humanAmount;
+
+    if (type === 'buy') {
+      cost = BigNumber(order.takerAmount).dividedBy(10 ** 18).dp(2).toFixed();
+      humanAmount = BigNumber(order.makerAmount).dividedBy(10 ** 5).toFixed();
+    } else {
+      cost = BigNumber(order.makerAmount).dividedBy(10 ** 18).dp(2).toFixed();
+      humanAmount = BigNumber(order.takerAmount).dividedBy(10 ** 5).toFixed();
+    }
+
+    const action = type === 'buy' ? 'purchased' : 'sold';
 
     await notify({
       dismiss: {
         duration: timeout,
         onScreen: true,
       },
-      message: `${humanAmount} can be purchased for ${cost} DAI.\nClick here to complete the order.`,
+      message: `${humanAmount} can be ${action} for ${cost} DAI.\nClick here to complete the order.`,
       title: 'Order Quote',
     });
 
@@ -128,6 +140,8 @@ class App extends React.Component {
 
       const transaction = await this.fillOrder(order);
       console.log('transaction', transaction);
+
+      await this.updateBalances();
     } else {
       notify({
         message: 'Order expired',
@@ -250,6 +264,49 @@ class App extends React.Component {
     }
   }
 
+  async sellOrder({ amount, tokenAddress }) {
+    await this.connect();
+
+    const amountI = BigNumber(amount).multipliedBy(10 ** 5);
+    console.log('amountI', amountI.toFixed());
+
+    try {
+      const order = await this.airswap.getOrder(amountI, tokenAddress, 'sell');
+      return this.executeOrder(order, 'sell');
+    } catch (e) {
+      return Promise.reject(e);
+    }
+  }
+
+  async updateBalances() {
+    const {
+      address,
+      cDai,
+      dai,
+      longD,
+      shortD,
+    } = this.state;
+
+    const [
+      cDaiBalance,
+      daiBalance,
+      longDBalance,
+      shortDBalance,
+    ] = await Promise.all([
+      balance(cDai, address),
+      balance(dai, address),
+      balance(longD, address),
+      balance(shortD, address),
+    ]);
+
+    this.setState({
+      cDaiBalance,
+      daiBalance,
+      longDBalance,
+      shortDBalance,
+    });
+  }
+
   async updateEthers(provider) {
     const ethers = new eth.providers.Web3Provider(provider);
     const signer = ethers.getSigner();
@@ -319,19 +376,23 @@ class App extends React.Component {
       betOrder,
       hedgeOrder,
       props,
+      sellOrder,
       state,
+      updateBalances,
     } = this;
 
     const orderMethods = {
       betOrder,
       hedgeOrder,
+      sellOrder,
+      updateBalances,
     };
 
     return (
       <div className="app">
         <ReactNotification />
-        <Header {...props} {...state} />
-        <Drawer {...props} {...state} />
+        <Header {...props} {...state} {...orderMethods} />
+        <Drawer {...props} {...state} {...orderMethods} />
         <Hero {...props} {...state} {...orderMethods} />
         <Team {...props} {...state} />
         <Press {...props} {...state} />

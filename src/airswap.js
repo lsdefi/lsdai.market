@@ -41,6 +41,12 @@ class Airswap {
 
     // if not, approve for max
     if (BigNumber(amountApproved).isLessThan(amount)) {
+      notify({
+        dismiss: { duration: 15000 },
+        message: 'Please approve Airswap\'s exchange to swap tokens on your behalf. This is required to continue.',
+        title: 'Please approve...',
+        type: 'info',
+      });
       await erc20Contract.approve(airswap, max256);
     }
   }
