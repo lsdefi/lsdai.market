@@ -1,39 +1,108 @@
+import BigNumber from 'bignumber.js';
+import PropTypes from 'prop-types';
 import React from 'react';
 
-import InfoBox from './InfoBox';
+class BetPanel extends React.Component {
+  constructor(props) {
+    super(props);
 
-const BetPanel = () => (
-  <div>
-    <InfoBox>
-      lorem lorem lorem
-    </InfoBox>
-    <p className="font-bold font-2xl">I think the cDai lending rate on Compound will go:</p>
-    <div className="up-down">
-      <img src="./assets/images/up.svg" alt="when clicked, apply class selected" />
-      <img src="./assets/images/down.svg" alt="down" />
-    </div>
+    this.state = {
+      dai: 1,
+      direction: 'up',
+    };
 
-    <div className="quantity-box">
+    this.submit = this.submit.bind(this);
+    this.updateDai = this.updateDai.bind(this);
+    this.updateDaiFallback = (evt) => this.updateDai(evt, 0);
+  }
+
+  submit(evt) {
+    evt.preventDefault();
+    const { props, state } = this;
+    const { betOrder } = props;
+    betOrder(state);
+  }
+
+  updateDai(evt, fallback = '') {
+    evt.preventDefault();
+    this.clean = false;
+    const dai = BigNumber(evt.target.value).toNumber();
+    if (Number.isNaN(dai)) {
+      this.setState({ dai: fallback });
+    } else {
+      this.setState({ dai });
+    }
+  }
+
+  render() {
+    const {
+      state,
+      submit,
+      updateDai,
+      updateDaiFallback,
+    } = this;
+    const { dai, direction } = state;
+
+    return (
       <div>
-        <span>I want to make</span>
-        <input
-          type="text"
-          id="profit"
-          name="profit"
-          required
-          minLength="1"
-          maxLength="2"
-          size="3"
-        />
-        <span>DAI for every additional percentage point of increase/decrease in rate.</span>
+        <p className="font-bold font-2xl">I think the cDai lending rate on Compound will go:</p>
+        <div className="up-down">
+          <img
+            src="./assets/images/up.svg"
+            alt="up"
+            onClick={() => this.setState({ direction: 'up' })}
+            className={direction === 'up' ? 'hidden' : ''}
+          />
+          <img
+            src="./assets/images/up-selected.svg"
+            alt="up"
+            onClick={() => this.setState({ direction: 'up' })}
+            className={direction === 'up' ? 'selected' : 'hidden'}
+          />
+          <img
+            src="./assets/images/down.svg"
+            alt="down"
+            onClick={() => this.setState({ direction: 'down' })}
+            className={direction === 'down' ? 'hidden' : ''}
+          />
+          <img
+            src="./assets/images/down-selected.svg"
+            alt="down"
+            onClick={() => this.setState({ direction: 'down' })}
+            className={direction === 'down' ? 'selected' : 'hidden'}
+          />
+        </div>
+
+        <div className="quantity-box">
+          <div>
+            <span>I want to make</span>
+            <input
+              type="text"
+              id="profit"
+              name="profit"
+              required
+              minLength="1"
+              maxLength="2"
+              size="3"
+              onBlur={updateDaiFallback}
+              onChange={updateDai}
+              value={dai}
+            />
+            <span>DAI for every additional percentage point of increase/decrease in rate.</span>
+          </div>
+          <div className="w-full text-right">
+            <button type="button" className="button-black" onClick={submit}>
+              BET
+            </button>
+          </div>
+        </div>
       </div>
-      <div className="w-full text-right">
-        <button type="button" className="button-black">
-          BET
-        </button>
-      </div>
-    </div>
-  </div>
-);
+    );
+  }
+}
+
+BetPanel.propTypes = {
+  betOrder: PropTypes.func.isRequired,
+};
 
 export default BetPanel;

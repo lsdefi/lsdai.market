@@ -219,10 +219,13 @@ input[type="radio"]{
   @apply inline-block my-3 w-10 h-10 mr-3 border-2 border-white;
 }
 .up-down img:hover, .up-down img.selected{
-  @apply cursor-pointer border-2 border-gold;
+  @apply cursor-pointer border-2 border-gold text-white bg-red;
+}
+.up-down img.hidden {
+  display: none;
 }
 
-.coming-soon{
+coming-soon{
   @apply h-48 flex items-center pb-8;
 }
 .coming-soon > *{

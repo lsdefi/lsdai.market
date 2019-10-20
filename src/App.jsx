@@ -38,6 +38,7 @@ class App extends React.Component {
       signer: undefined,
     };
 
+    this.betOrder = this.betOrder.bind(this);
     this.hedgeOrder = this.hedgeOrder.bind(this);
 
     window.App = this;
@@ -45,6 +46,24 @@ class App extends React.Component {
 
   componentWillUnmount() {
     this.airswap.stop();
+  }
+
+  async betOrder({ dai, direction }) {
+    await this.connect();
+
+    const { contractAddresses } = this.props;
+    const { longD, shortD } = contractAddresses;
+    const tokenAddress = direction === 'up' ? longD : shortD;
+    console.log('tokenAddress', tokenAddress);
+    const amountI = BigNumber(dai).multipliedBy(10 ** 5);
+    console.log('amountI', amountI.toFixed());
+
+    try {
+      const order = await this.airswap.getOrder(amountI, tokenAddress);
+      return this.executeOrder(order);
+    } catch (e) {
+      return Promise.reject(e);
+    }
   }
 
   async connect() {
@@ -86,6 +105,35 @@ class App extends React.Component {
 
     await this.airswap.connection;
     await this.airswap.authenticate();
+  }
+
+  async executeOrder(order) {
+    const expiration = BigNumber(order.expiration).multipliedBy(1000);
+    const now = BigNumber((new Date()).valueOf());
+    const timeout = expiration.minus(now).toNumber();
+    const cost = BigNumber(order.takerAmount).dividedBy(10 ** 18).dp(2).toFixed();
+    const humanAmount = BigNumber(order.makerAmount).dividedBy(10 ** 5).toFixed();
+
+    await notify({
+      dismiss: {
+        duration: timeout,
+        onScreen: true,
+      },
+      message: `${humanAmount} can be purchased for ${cost} DAI.\nClick here to complete the order.`,
+      title: 'Order Quote',
+    });
+
+    if (expiration.isGreaterThan((new Date()).valueOf())) {
+      notify({ message: 'Sign the transaction to complete your order.' });
+
+      const transaction = await this.fillOrder(order);
+      console.log('transaction', transaction);
+    } else {
+      notify({
+        message: 'Order expired',
+        type: 'warning',
+      });
+    }
   }
 
   // address makerAddress, uint makerAmount, address makerToken,
@@ -194,33 +242,11 @@ class App extends React.Component {
     const amountI = amount.multipliedBy(10 ** 5).dp(0);
     console.log('amountI', amountI.toFixed());
 
-    const order = await this.airswap.getOrder(amountI, tokenAddress);
-
-    const expiration = BigNumber(order.expiration).multipliedBy(1000);
-    const now = BigNumber((new Date()).valueOf());
-    const timeout = expiration.minus(now).toNumber();
-    const cost = BigNumber(order.takerAmount).dividedBy(10 ** 18).dp(2).toFixed();
-    const humanAmount = BigNumber(order.makerAmount).dividedBy(10 ** 5).toFixed();
-
-    await notify({
-      dismiss: {
-        duration: timeout,
-        onScreen: true,
-      },
-      message: `${humanAmount} can be purchased for ${cost} DAI.\nClick here to complete the order.`,
-      title: 'Order Quote',
-    });
-
-    if (expiration.isGreaterThan((new Date()).valueOf())) {
-      notify({ message: 'Sign the transaction to complete your order.' });
-
-      const transaction = await this.fillOrder(order);
-      console.log('transaction', transaction);
-    } else {
-      notify({
-        message: 'Order expired',
-        type: 'warning',
-      });
+    try {
+      const order = await this.airswap.getOrder(amountI, tokenAddress);
+      return this.executeOrder(order);
+    } catch (e) {
+      return Promise.reject(e);
     }
   }
 
@@ -290,12 +316,14 @@ class App extends React.Component {
 
   render() {
     const {
+      betOrder,
       hedgeOrder,
       props,
       state,
     } = this;
 
     const orderMethods = {
+      betOrder,
       hedgeOrder,
     };
 
