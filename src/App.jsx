@@ -9,6 +9,7 @@ import { ethers as eth } from 'ethers';
 import './styles.css';
 
 import Header from './components/Header';
+import Drawer from './components/Drawer';
 import Hero from './components/Hero';
 import Team from './components/Team';
 import Press from './components/Press';
@@ -302,6 +303,7 @@ class App extends React.Component {
       <div className="app">
         <ReactNotification />
         <Header {...props} {...state} />
+        <Drawer {...props} {...state} />
         <Hero {...props} {...state} {...orderMethods} />
         <Team {...props} {...state} />
         <Press {...props} {...state} />

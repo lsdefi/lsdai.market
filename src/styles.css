@@ -77,10 +77,42 @@ i:hover{
   @apply h-5 inline-block pr-3;
 }
 
+
+/* Drawer Specific */
+
+
+.drawer {
+  @apply h-full flex relative flex-col fixed bg-white text-left py-12;
+  opacity: 0.96;
+  top: 0;
+  right: 0;
+  z-index: 999;
+  transition: 0.5s;
+}
+.drawer .top{
+  @apply cursor-pointer;
+}
+.drawer ul{
+  @apply text-left
+}
+.drawer li{
+  @apply text-dark text-2xl p-4 flex flex-no-wrap items-center;
+}
+.drawer li:hover{
+  @apply bg-grey cursor-pointer;
+  opacity: 1;
+}
+.drawer li img{
+  @apply w-10 mr-8;
+}
+.drawer li span{
+  @apply text-base ml-3;
+}
+
 /* Hero Specific */
 
 .hero {
-  @apply bg-dark text-white;
+  @apply bg-dark text-white py-6;
 }
 .hero .container{
   @apply flex flex-row flex-wrap;
@@ -165,12 +197,7 @@ i:hover{
 .react-tabs__tab-panel p{
   @apply text-sm;
 }
-.react-tabs__tab-panel .info-box{
-  @apply flex flex-no-wrap p-4 bg-pink-shadow;
-}
-.react-tabs__tab-panel .info-box img{
-  @apply w-5 h-5 mr-3;
-}
+
 input[type="radio"]{
   @apply mr-2;
   margin-top: -1px;
@@ -240,6 +267,18 @@ input[type="radio"]{
   .team .member > div{
     @apply inline-block;
   }
+}
+
+/* InfoBox specific */
+
+.info-box{
+  @apply flex flex-no-wrap p-4;
+}
+.info-box img{
+  @apply w-5 h-5 mr-3;
+}
+.info-box p{
+  @apply text-sm;
 }
 
 /* Press Specific */

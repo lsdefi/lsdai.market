@@ -2,17 +2,25 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 const InfoBox = (props) => {
-  const { children } = props;
-
+  const { children, color } = props;
+  let bgColor = 'pink-shadow';
+  if (color !== 'yellow') {
+    if (color === 'blue') bgColor = 'blue-shadow';
+  }
+  const bg = `info-box bg-${bgColor}`;
   return (
-    <div className="info-box">
-      <img src="../assets/images/info.png" alt="info" />
+    <div className={bg}>
+      <img src={`../assets/images/info-${color}.png`} alt="info" />
       <p>{children}</p>
     </div>
   );
 };
 
+InfoBox.defaultProps = {
+  color: 'yellow',
+};
 InfoBox.propTypes = {
+  color: PropTypes.string,
   children: PropTypes.node.isRequired,
 };
 
