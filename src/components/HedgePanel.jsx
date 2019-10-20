@@ -45,7 +45,6 @@ class HedgePanel extends React.Component {
     evt.preventDefault();
     const { props, state } = this;
     const { hedgeOrder } = props;
-    console.log(hedgeOrder);
     hedgeOrder(state);
   }
 

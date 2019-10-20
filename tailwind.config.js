@@ -8,14 +8,14 @@ module.exports = {
    }),
     extend: {
       colors:{
-        'dark': '#0b0b0b',
-        'gold': '#e8c538',
-        'green': '#00ff00',
-        'grey': '#e8e8e8',
-        'darkgrey': '#888888',
-        'red': '#ff0000',
-        'pink-shadow': '#eabd4810',
         'blue-shadow': '#0000ff30',
+        'dark': '#0b0b0b',
+        'darkgrey': '#888888',
+        'gold': '#e8c538',
+        'green': '#4d995a',
+        'grey': '#e8e8e8',
+        'pink-shadow': '#eabd4810',
+        'red': '#c81d24',
       },
     },
     fontFamily: {

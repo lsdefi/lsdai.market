@@ -41,6 +41,12 @@ class Airswap {
 
     // if not, approve for max
     if (BigNumber(amountApproved).isLessThan(amount)) {
+      notify({
+        dismiss: { duration: 15000 },
+        message: 'Please approve Airswap\'s exchange to swap tokens on your behalf. This is required to continue.',
+        title: 'Please approve...',
+        type: 'info',
+      });
       await erc20Contract.approve(airswap, max256);
     }
   }
@@ -218,7 +224,18 @@ class Airswap {
     if (receiver === address && sender === makerAddress) {
       const { id, result } = JSON.parse(message);
       clearTimeout(this.timeoutPids[id]);
-      this.resolvers[id](result);
+
+      if (result.error) {
+        notify({
+          message: result.error,
+          title: 'Error processing order',
+          type: 'danger',
+        });
+        this.resolvers.reject(result.error);
+      } else {
+        this.resolvers[id].resolve(result);
+      }
+
       delete this.resolvers[id];
       delete this.timeoutPids[id];
     }
@@ -260,13 +277,12 @@ class Airswap {
 
     this.send(JSON.stringify(payload));
 
-    // TODO: hook up receivers
     return new Promise((resolve, reject) => {
       this.timeoutPids[message.id] = setTimeout(() => {
         reject(new Error(`${message.id} timed out`));
       }, 1 * 60 * 1000);
 
-      this.resolvers[message.id] = resolve;
+      this.resolvers[message.id] = { resolve, reject };
     });
   }
 

@@ -20,7 +20,7 @@ class Team extends React.Component {
         {
           name: 'Tina Zhen',
           bio: 'A four-time winner of EthGlobal hackathons, founder of the Yellow Hat DAO, and creator of Hashedge.io, a decentralized marketplace for mining and staking derivatives. Tina has previously co-founded the venture-backed startup EdgeOn IoT and worked at the Chinese investment bank CICC.',
-          img: './assets/images/team/black.png',
+          img: './assets/images/team/tina.jpg',
         },
         {
           name: 'Francesco Renzi',
@@ -33,7 +33,7 @@ class Team extends React.Component {
         {
           name: 'David Leitart',
           bio: 'Works as a financial analyst at the CryptoPosition Investment Fund, the first crypto fund in Hungary. In tandem, he heads his outlet Cryptoberg Research, maintaining a comprehensive perspective on the blockchain scene, and analyzing projects in-depth. ',
-          img: './assets/images/team/black.png',
+          img: './assets/images/team/david.jpg',
         },
         {
           name: 'Zhicheng Miao',
