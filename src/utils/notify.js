@@ -1,3 +1,4 @@
+import uuid from 'uuid/v4';
 import { store } from 'react-notifications-component';
 
 const defaults = {
@@ -11,8 +12,14 @@ const defaults = {
   },
 };
 
-const notify = (options) => {
-  const config = { ...defaults, ...options };
+const notify = (options) => new Promise((resolve) => {
+  const config = {
+    id: uuid(),
+    onRemoval: () => resolve(),
+
+    ...defaults,
+    ...options,
+  };
 
   if (options.dismiss) {
     const { dismiss } = defaults;
@@ -20,6 +27,6 @@ const notify = (options) => {
   }
 
   store.addNotification(config);
-};
+});
 
 export default notify;

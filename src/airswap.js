@@ -3,6 +3,7 @@ import uuid from 'uuid/v4';
 import { ethers } from 'ethers';
 
 import erc20 from './abi/erc20';
+import notify from './utils/notify';
 
 window.uuid = uuid;
 
@@ -46,6 +47,13 @@ class Airswap {
 
   async authenticate() {
     if (this.signingRequest) {
+      notify({
+        dismiss: { duration: 5000 },
+        message: 'Connecting to Airswap',
+        title: 'Please wait...',
+        type: 'info',
+      });
+
       this.sendSigned(this.signingRequest);
       await this.authorization;
       this.authorized = true;
@@ -105,12 +113,21 @@ class Airswap {
   }
 
   async getOrder(amount, token, type = 'buy') {
-    const { address, contractAddresses } = this.props;
-    const { dai } = contractAddresses;
-
     if (!this.authorized) {
       await this.authenticate();
     }
+
+    const { address, contractAddresses } = this.props;
+    const { dai, longD } = contractAddresses;
+    const tokenName = token === longD ? 'LongD' : 'ShortD';
+    const humanAmount = BigNumber(amount).dividedBy(10 ** 5).dp(5).toFixed();
+
+    notify({
+      dismiss: { duration: 10000 },
+      message: `Asking to ${type} ${humanAmount} ${tokenName}`,
+      title: 'Please wait...',
+      type: 'info',
+    });
 
     const id = uuid();
     const jsonrpc = '2.0';
@@ -157,6 +174,9 @@ class Airswap {
     this.safeReceive(() => {
       const payload = JSON.parse(evt.data);
       this.lastPayload = payload;
+      if (payload.message) {
+        this.receiveMessageResponse(payload);
+      }
       console.log('AIRSWAP WS PAYLOAD', payload);
     });
   }
@@ -190,6 +210,18 @@ class Airswap {
 
       this.onMessage(evt);
     });
+  }
+
+  receiveMessageResponse({ message, receiver, sender }) {
+    const { address, makerAddress } = this.props;
+
+    if (receiver === address && sender === makerAddress) {
+      const { id, result } = JSON.parse(message);
+      clearTimeout(this.timeoutPids[id]);
+      this.resolvers[id](result);
+      delete this.resolvers[id];
+      delete this.timeoutPids[id];
+    }
   }
 
   reset() {

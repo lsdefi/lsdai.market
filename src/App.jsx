@@ -15,6 +15,7 @@ import Press from './components/Press';
 import Footer from './components/Footer';
 
 import Airswap from './airswap';
+import airswapABI from './abi/airswap';
 import animate from './utils/animate';
 import balance from './utils/balance';
 import erc20 from './abi/erc20';
@@ -86,12 +87,48 @@ class App extends React.Component {
     await this.airswap.authenticate();
   }
 
+  // address makerAddress, uint makerAmount, address makerToken,
+  // address takerAddress, uint takerAmount, address takerToken,
+  // uint256 expiration, uint256 nonce, uint8 v, bytes32 r, bytes32 s
+  async fillOrder({
+    expiration,
+    makerAddress,
+    makerAmount,
+    makerToken,
+    nonce,
+    r,
+    s,
+    takerAddress,
+    takerAmount,
+    takerToken,
+    v,
+  }) {
+    const { airswap } = this.state;
+
+    return airswap.fill(
+      makerAddress,
+      makerAmount,
+      makerToken,
+      takerAddress,
+      takerAmount,
+      takerToken,
+      expiration,
+      nonce,
+      v,
+      r,
+      s,
+    );
+  }
+
   async hedgeOrder({
     cDai,
     dai,
     months,
     side,
   }) {
+    let amount;
+    let tokenAddress;
+
     await this.connect();
 
     const { contractAddresses, gun } = this.props;
@@ -116,6 +153,8 @@ class App extends React.Component {
     // risked amount / risked rate increase = number of longD
     //
     if (side === 'borrow') {
+      tokenAddress = contractAddresses.longD;
+
       const riskedRateIncrease = BigNumber(20).minus(supplyRate);
       console.log('riskedRateIncrease', riskedRateIncrease.toFixed());
       const riskedRateIncreaseD = riskedRateIncrease.dividedBy(100);
@@ -124,10 +163,8 @@ class App extends React.Component {
       console.log('potentialAnnualCost', potentialAnnualCost.toFixed());
       const potentialCost = potentialAnnualCost.times(aprAdjustment);
       console.log('potentialCost', potentialCost.toFixed());
-      const longD = potentialCost.dividedBy(riskedRateIncrease);
-      console.log('longD', longD.toFixed());
-
-      this.airswap.getOrder(longD.multipliedBy(10 ** 5).dp(0), contractAddresses.longD);
+      amount = potentialCost.dividedBy(riskedRateIncrease);
+      console.log('longD', amount.toFixed());
     }
 
     // side lend
@@ -137,6 +174,8 @@ class App extends React.Component {
     // risked amount / risked rate decrease = number of shortD
     //
     if (side === 'lend') {
+      tokenAddress = contractAddresses.shortD;
+
       const riskedRateDecrease = BigNumber(supplyRate).minus(5);
       console.log('riskedRateDecrease', riskedRateDecrease.toFixed());
       const riskedRateDecreaseD = riskedRateDecrease.dividedBy(100);
@@ -147,10 +186,40 @@ class App extends React.Component {
       console.log('potentialAnnualCost', potentialAnnualCost.toFixed());
       const potentialCost = potentialAnnualCost.times(aprAdjustment);
       console.log('potentialCost', potentialCost.toFixed());
-      const shortD = potentialCost.dividedBy(riskedRateDecrease);
-      console.log('shortD', shortD.toFixed());
+      amount = potentialCost.dividedBy(riskedRateDecrease);
+      console.log('shortD', amount.toFixed());
+    }
 
-      this.airswap.getOrder(shortD.multipliedBy(10 ** 5).dp(0), contractAddresses.shortD);
+    const amountI = amount.multipliedBy(10 ** 5).dp(0);
+    console.log('amountI', amountI.toFixed());
+
+    const order = await this.airswap.getOrder(amountI, tokenAddress);
+
+    const expiration = BigNumber(order.expiration).multipliedBy(1000);
+    const now = BigNumber((new Date()).valueOf());
+    const timeout = expiration.minus(now).toNumber();
+    const cost = BigNumber(order.takerAmount).dividedBy(10 ** 18).dp(2).toFixed();
+    const humanAmount = BigNumber(order.makerAmount).dividedBy(10 ** 5).toFixed();
+
+    await notify({
+      dismiss: {
+        duration: timeout,
+        onScreen: true,
+      },
+      message: `${humanAmount} can be purchased for ${cost} DAI.\nClick here to complete the order.`,
+      title: 'Order Quote',
+    });
+
+    if (expiration.isGreaterThan((new Date()).valueOf())) {
+      notify({ message: 'Sign the transaction to complete your order.' });
+
+      const transaction = await this.fillOrder(order);
+      console.log('transaction', transaction);
+    } else {
+      notify({
+        message: 'Order expired',
+        type: 'warning',
+      });
     }
   }
 
@@ -168,6 +237,7 @@ class App extends React.Component {
     const { props } = this;
     const { contractAddresses } = props;
 
+    const airswap = new eth.Contract(contractAddresses.airswap, airswapABI, signer);
     const cDai = new eth.Contract(contractAddresses.cDai, erc20, signer);
     const dai = new eth.Contract(contractAddresses.dai, erc20, signer);
     const longD = new eth.Contract(contractAddresses.longD, erc20, signer);
@@ -189,6 +259,7 @@ class App extends React.Component {
 
     this.setState({
       address,
+      airswap,
       cDai,
       cDaiBalance,
       dai,
@@ -240,8 +311,14 @@ class App extends React.Component {
   }
 }
 
+App.defaultProps = {
+  airswap: undefined,
+};
+
 App.propTypes = {
+  airswap: PropTypes.instanceOf(eth.Contract),
   contractAddresses: PropTypes.shape({
+    airswap: PropTypes.string.isRequired,
     cDai: PropTypes.string.isRequired,
     dai: PropTypes.string.isRequired,
     longD: PropTypes.string.isRequired,
