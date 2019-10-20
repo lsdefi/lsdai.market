@@ -38,7 +38,10 @@ class Team extends React.Component {
         {
           name: 'Zhicheng Miao',
           bio: 'Founder and architect at Decentral.ee, and the co-creator of the rDai protocol, which decouples interests generated from liquidity locked in DeFi. Miao has over ten years of experience in the software industry, including Skype, Microsoft, and Twilio.',
-          img: './assets/images/team/black.png',
+          img: './assets/images/team/miao.jpeg',
+          github: 'hellwolf',
+          linkedin: 'miaozc',
+          twitter: 'hellwolf',
         },
       ],
     };

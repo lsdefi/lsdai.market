@@ -5,12 +5,16 @@
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
    xmlns:svg="http://www.w3.org/2000/svg"
    xmlns="http://www.w3.org/2000/svg"
-   id="svg41"
-   version="1.1"
-   fill="none"
-   viewBox="0 0 48 48"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="48"
    height="48"
-   width="48">
+   viewBox="0 0 48 48"
+   fill="none"
+   version="1.1"
+   id="svg41"
+   sodipodi:docname="shortD.svg"
+   inkscape:version="0.92.4 (f8dce91, 2019-08-02)">
   <metadata
      id="metadata45">
     <rdf:RDF>
@@ -23,103 +27,135 @@
       </cc:Work>
     </rdf:RDF>
   </metadata>
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1853"
+     inkscape:window-height="1025"
+     id="namedview43"
+     showgrid="false"
+     showguides="false"
+     inkscape:zoom="4.9166667"
+     inkscape:cx="24"
+     inkscape:cy="24"
+     inkscape:window-x="67"
+     inkscape:window-y="27"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="g14" />
   <g
-     id="g14"
-     clip-path="url(#clip0)">
+     clip-path="url(#clip0)"
+     id="g14">
     <g
-       id="g4"
-       filter="url(#filter0_d)">
+       filter="url(#filter0_d)"
+       id="g4">
       <circle
-         id="circle2"
-         fill="white"
-         transform="rotate(-5.6583 24 24)"
-         r="24"
+         cx="24"
          cy="24"
-         cx="24" />
+         r="24"
+         transform="rotate(-5.6583 24 24)"
+         fill="white"
+         id="circle2" />
     </g>
     <path
-       style="fill:url(#paint0_linear)"
+       d="m 27.997463,0.18938533 c 4.700749,0.65931915 9.100396,2.69786397 12.642552,5.85769897 4.749939,4.2372217 7.622016,10.1877747 7.98456,16.5426907 0.362577,6.354805 -1.814242,12.593442 -6.051477,17.343367 -3.15983,3.542161 -7.299075,6.067771 -11.89435,7.257492 -4.595214,1.189669 -9.440052,0.990002 -13.921827,-0.573801 C 12.275192,45.053095 8.3577387,42.195375 5.5001224,38.405247 2.6424376,34.615046 0.97288749,30.062605 0.70249372,25.323516 L 8.3265386,24.88862 c 0.1843115,3.23121 1.3226074,6.335099 3.2709924,8.919299 1.94846,2.584266 4.619414,4.532677 7.675179,5.598905 3.055697,1.066155 6.35897,1.202304 9.492152,0.391151 3.13308,-0.811119 5.955341,-2.533175 8.109747,-4.948255 2.889042,-3.238607 4.373202,-7.492214 4.125977,-11.825043 C 40.753436,18.691781 38.79516,14.634649 35.556627,11.74554 33.141539,9.5911401 30.141765,8.201274 26.936731,7.7516748 Z"
        id="path6"
-       d="m 27.997463,0.18938533 c 4.700749,0.65931915 9.100396,2.69786397 12.642552,5.85769897 4.749939,4.2372217 7.622016,10.1877747 7.98456,16.5426907 0.362577,6.354805 -1.814242,12.593442 -6.051477,17.343367 -3.15983,3.542161 -7.299075,6.067771 -11.89435,7.257492 -4.595214,1.189669 -9.440052,0.990002 -13.921827,-0.573801 C 12.275192,45.053095 8.3577387,42.195375 5.5001224,38.405247 2.6424376,34.615046 0.97288749,30.062605 0.70249372,25.323516 L 8.3265386,24.88862 c 0.1843115,3.23121 1.3226074,6.335099 3.2709924,8.919299 1.94846,2.584266 4.619414,4.532677 7.675179,5.598905 3.055697,1.066155 6.35897,1.202304 9.492152,0.391151 3.13308,-0.811119 5.955341,-2.533175 8.109747,-4.948255 2.889042,-3.238607 4.373202,-7.492214 4.125977,-11.825043 C 40.753436,18.691781 38.79516,14.634649 35.556627,11.74554 33.141539,9.5911401 30.141765,8.201274 26.936731,7.7516748 Z" />
+       style="fill:url(#paint0_linear)"
+       inkscape:connector-curvature="0"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
     <path
+       d="M24 41C33.3888 41 41 33.3888 41 24C41 14.6112 33.3888 7 24 7C14.6112 7 7 14.6112 7 24C7 33.3888 14.6112 41 24 41Z"
        id="path8"
        fill="white"
-       d="M24 41C33.3888 41 41 33.3888 41 24C41 14.6112 33.3888 7 24 7C14.6112 7 7 14.6112 7 24C7 33.3888 14.6112 41 24 41Z" />
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
     <path
-       style="opacity:0.8;fill:#ff0000"
+       d="m 17.117547,17.381783 13.03899,0.08396 -8.705051,4.108504 -4.021852,8.745423 z"
        id="path10"
-       d="m 17.117547,17.381783 13.03899,0.08396 -8.705051,4.108504 -4.021852,8.745423 z" />
+       style="opacity:0.8;fill:#ff0000"
+       inkscape:connector-curvature="0"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
     <path
-       style="clip-rule:evenodd;fill:#800000;fill-rule:evenodd"
+       d="m 30.156538,17.465885 0.06351,12.790415 -12.790415,0.06351 4.021852,-8.745422 z m -1.875061,1.793858 -2.762423,2.789994 0.01821,3.668566 -3.668566,0.01821 -2.713102,2.74018 9.121848,-0.0453 z"
        id="path12"
-       d="m 30.156538,17.465885 0.06351,12.790415 -12.790415,0.06351 4.021852,-8.745422 z m -1.875061,1.793858 -2.762423,2.789994 0.01821,3.668566 -3.668566,0.01821 -2.713102,2.74018 9.121848,-0.0453 z" />
+       style="clip-rule:evenodd;fill:#800000;fill-rule:evenodd"
+       inkscape:connector-curvature="0"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
   </g>
   <defs
      id="defs39">
     <filter
-       color-interpolation-filters="sRGB"
-       filterUnits="userSpaceOnUse"
-       height="144.499"
-       width="144.499"
-       y="-44.2493"
+       id="filter0_d"
        x="-48.2494"
-       id="filter0_d">
+       y="-44.2493"
+       width="144.499"
+       height="144.499"
+       filterUnits="userSpaceOnUse"
+       color-interpolation-filters="sRGB">
       <feFlood
-         id="feFlood16"
+         flood-opacity="0"
          result="BackgroundImageFix"
-         flood-opacity="0" />
+         id="feFlood16" />
       <feColorMatrix
-         id="feColorMatrix18"
-         values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+         in="SourceAlpha"
          type="matrix"
-         in="SourceAlpha" />
+         values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+         id="feColorMatrix18" />
       <feOffset
-         id="feOffset20"
-         dy="4" />
+         dy="4"
+         id="feOffset20" />
       <feGaussianBlur
-         id="feGaussianBlur22"
-         stdDeviation="23" />
+         stdDeviation="23"
+         id="feGaussianBlur22" />
       <feColorMatrix
-         id="feColorMatrix24"
+         type="matrix"
          values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.08 0"
-         type="matrix" />
+         id="feColorMatrix24" />
       <feBlend
-         id="feBlend26"
-         result="effect1_dropShadow"
+         mode="normal"
          in2="BackgroundImageFix"
-         mode="normal" />
+         result="effect1_dropShadow"
+         id="feBlend26" />
       <feBlend
-         id="feBlend28"
-         result="shape"
-         in2="effect1_dropShadow"
+         mode="normal"
          in="SourceGraphic"
-         mode="normal" />
+         in2="effect1_dropShadow"
+         result="shape"
+         id="feBlend28" />
     </filter>
     <linearGradient
-       gradientTransform="rotate(-132.60672,24.322256,23.83273)"
-       gradientUnits="userSpaceOnUse"
-       y2="44.2248"
-       x2="25.5258"
-       y1="4.3305087"
+       id="paint0_linear"
        x1="20.033897"
-       id="paint0_linear">
+       y1="4.3305087"
+       x2="25.5258"
+       y2="44.2248"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="rotate(-132.60672,24.322256,23.83273)">
       <stop
-         style="stop-color:#ff2a2a;stop-opacity:1"
+         stop-color="#27D3A2"
          id="stop31"
-         stop-color="#27D3A2" />
+         style="stop-color:#ff2a2a;stop-opacity:1" />
       <stop
-         style="stop-color:#800000;stop-opacity:1"
-         id="stop33"
+         offset="1"
          stop-color="#9388FD"
-         offset="1" />
+         id="stop33"
+         style="stop-color:#800000;stop-opacity:1" />
     </linearGradient>
     <clipPath
        id="clip0">
       <rect
-         id="rect36"
-         fill="white"
+         width="48"
          height="48"
-         width="48" />
+         fill="white"
+         id="rect36" />
     </clipPath>
   </defs>
 </svg>
