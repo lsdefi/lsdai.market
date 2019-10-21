@@ -262,10 +262,13 @@ input[type="radio"]{
 }
 .team .member .social{
   @apply mx-auto mb-6 block;
-  max-width: 100px;
+  width: 100px;
 }
 .team .member .social img{
-  @apply ;
+  @apply object-cover;
+  width: 100px !important;
+  height: 100px !important;
+  max-width: 100px !important;
 }
 .team .member .social div{
   @apply mt-2 flex flex-wrap justify-between;
