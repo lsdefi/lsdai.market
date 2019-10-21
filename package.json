@@ -23,8 +23,10 @@
   "devDependencies": {
     "@babel/cli": "^7.6.3",
     "@babel/core": "^7.6.3",
+    "@babel/plugin-transform-runtime": "^7.6.2",
     "@babel/preset-env": "^7.6.3",
     "@babel/preset-react": "^7.6.3",
+    "@babel/runtime": "^7.6.3",
     "autoprefixer": "^9.6.4",
     "babel-eslint": "^10.0.3",
     "babel-loader": "^8.0.6",
@@ -49,7 +51,23 @@
     "webpack-dev-server": "^3.8.2"
   },
   "dependencies": {
+    "@portis/web3": "^2.0.0-beta.45",
+    "@toruslabs/torus-embed": "^0.2.3",
+    "@walletconnect/web3-provider": "^1.0.0-beta.37",
+    "animate.css": "^3.7.2",
+    "bignumber.js": "^9.0.0",
+    "ethers": "^4.0.38",
+    "fortmatic": "^0.8.2",
+    "gun": "^0.2019.930",
+    "highcharts": "^7.2.0",
+    "prop-types": "^15.7.2",
     "react": "^16.10.2",
-    "react-dom": "^16.10.2"
+    "react-dom": "^16.10.2",
+    "react-notifications-component": "^2.1.0",
+    "react-tabs": "^3.0.0",
+    "squarelink": "^1.1.2",
+    "strftime": "^0.10.0",
+    "uuid": "^3.3.3",
+    "web3connect": "^1.0.0-beta.23"
   }
 }

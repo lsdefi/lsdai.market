@@ -12,15 +12,15 @@ const Press = () => (
       </p>
       <ul>
         <li>
-          <img src="../assets/images/chevrons.png" alt="-"/>
+          <img src="../assets/images/chevrons.png" alt="-" />
           <span>Take a look at our submission</span>
         </li>
         <li>
-          <img src="../assets/images/chevrons.png" alt="-"/>
+          <img src="../assets/images/chevrons.png" alt="-" />
           <span>In Media [proofofwork.news]</span>
         </li>
         <li>
-          <img src="../assets/images/chevrons.png" alt="-"/>
+          <img src="../assets/images/chevrons.png" alt="-" />
           <span>Watch our demo</span>
         </li>
       </ul>

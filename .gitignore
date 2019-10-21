@@ -102,3 +102,6 @@ dist
 
 # VIM cache files
 *.swp
+
+# NPM package-lock.json (use yarn!!)
+package-lock.json

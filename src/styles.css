@@ -4,6 +4,32 @@
 
 @tailwind utilities;
 
+@import "~animate.css/source/_base.css";
+@import "~animate.css/source/attention_seekers/pulse.css";
+@import "~animate.css/source/attention_seekers/tada.css";
+@import "~animate.css/source/fading_entrances/fadeIn.css";
+@import "~animate.css/source/fading_exits/fadeOut.css";
+@import "~animate.css/source/sliding_entrances/slideInRight.css";
+@import "~animate.css/source/sliding_exits/slideOutRight.css";
+
+@import "~react-notifications-component/dist/theme.css";
+
+@keyframes spin {
+  from { transform:rotate(0deg); }
+  to { transform:rotate(360deg); }
+}
+
+.animated.fastest {
+  animation-duration: 250ms;
+}
+
+.spin {
+  animation-name: spin;
+  animation-duration: 5000ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
 /* Custom css */
 
 #App {
@@ -19,13 +45,37 @@ h2{
 }
 
 .container {
-  @apply max-w-240 text-left inline-block h-full px-4;
+  @apply max-w-240 text-left inline-block h-full px-4 mx-auto;
 }
-.header .container{
-  @apply flex flex-no-wrap justify-between items-center
+
+.button-black{
+  @apply mt-4 m-1 px-5 py-2 bg-black text-white;
+  transition: 0.3s;
 }
+.button-black:hover{
+  @apply text-gold rounded-lg;
+}
+
 .app > div{
   @apply text-center;
+}
+
+.flip {
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+
+i:hover{
+  @apply text-gold;
+}
+
+/* Header Specific */
+
+.header .container{
+  @apply flex flex-no-wrap justify-between items-center
 }
 .header {
   @apply py-16;
@@ -33,62 +83,231 @@ h2{
 .header .container > img{
   @apply inline h-6;
 }
-
 .header .wallet {
   @apply font-lato font-bold uppercase py-3 px-4 bg-transparent border border-black;
   @apply leading-8 text-sm;
 }
-
 .header .wallet .metamask {
   @apply h-5 inline-block pr-3;
 }
 
-.hero {
-  @apply bg-dark h-144 text-white;
+
+/* Drawer Specific */
+
+.drawer {
+  @apply h-full flex relative flex-col fixed bg-white text-left py-12;
+  @apply w-80;
+  opacity: 0.96;
+  top: 0;
+  right: 0;
+  z-index: 999;
+  transition: 0.5s;
+}
+.drawer.hidden {
+  @apply hidden;
+}
+.drawer .top{
+  @apply cursor-pointer;
+}
+.drawer ul, .drawer .info-box {
+  @apply text-left
+}
+.drawer li{
+  @apply text-dark text-2xl p-4 flex flex-no-wrap items-center;
+}
+.drawer li:hover{
+  @apply bg-grey cursor-pointer;
+  opacity: 1;
+}
+.drawer li img{
+  @apply w-10 mr-8;
+}
+.drawer li span{
+  @apply text-base ml-3;
 }
 
-i {
-  @apply text-xl pr-4;
+/* Hero Specific */
+
+.hero {
+  @apply bg-dark text-white py-6;
 }
-.circle-icon {
-  @apply rounded-full h-5 w-5 p-0 flex items-center justify-center bg-black text-white;
-  display: inline-block !important;
+.hero .container{
+  @apply flex flex-row flex-wrap;
 }
-.circle-icon i {
+.hero .chart-container{
+  @apply max-h-full mt-4 mx-auto flex items-center;
+}
+.hero .chart-title span:first-child {
+  @apply text-2xl pr-2;
+}
+.hero .chart-title i {
+  @apply pr-1;
+}
+.hero #rate-history {
+  @apply w-120 my-auto;
+  margin-left: -11px;
+}
+.hero .subtitle{
+  @apply text-3xl;
+}
+@screen lg{
+  .hero .chart-container{
+    @apply w-1/2 mx-0 pr-12;
+  }
+  .hero .container {
+    @apply pb-0 flex-no-wrap;
+  }
+  .hero .tab-container{
+    @apply my-auto py-8 w-1/2 pl-12;
+  }
+  .hero .subtitle{
+    @apply text-4xl;
+  }
+}
+.hero .tab-container{
+  @apply my-auto py-8 my-auto w-full;
+}
+.react-tabs {
+  -webkit-tap-highlight-color: transparent;
+  @apply bg-white text-black p-0 w-full;
+}
+
+.react-tabs__tab-list {
+  @apply my-0 mx-0 flex p-0 m-0;
+}
+
+.react-tabs__tab {
+  @apply relative uppercase text-center flex-grow p-4 cursor-pointer inline-block border-0 bg-dark;
+  @apply text-grey !important;
+  list-style: none;
+}
+
+.react-tabs__tab--selected {
+  @apply bg-white border-0 border-t-4 border-gold;
+  @apply text-black !important;
+}
+
+.react-tabs__tab--disabled {
+  color: text-darkgrey;
+  cursor: default;
+}
+
+.react-tabs__tab:focus {
+  box-shadow: 0 0 5px hsl(208, 99%, 50%);
+  border-color: hsl(208, 99%, 50%);
+  outline: none;
+}
+
+.react-tabs__tab:focus:after {
+  content: "";
+  position: absolute;
+  height: 5px;
+  left: -4px;
+  right: -4px;
+  bottom: -5px;
+  background: #fff;
+}
+
+.react-tabs__tab-panel {
+  @apply hidden p-4;
+  min-height: 330px;
+}
+.react-tabs__tab-panel p{
   @apply text-sm;
-  padding-left: 0.2rem;
-  vertical-align: 0.1rem;
 }
-.team, .press {
+
+input[type="radio"]{
+  @apply mr-2;
+  margin-top: -1px;
+  vertical-align: middle;
+}
+.quantity-box div:first-child{
+  @apply mb-4
+}
+.quantity-box input{
+  @apply border border-black px-1 mx-1;
+  border-radius: 2px;
+
+}
+.react-tabs__tab-panel--selected {
+  display: block;
+}
+
+.up-down img{
+  @apply inline-block my-3 w-10 h-10 mr-3 border-2 border-white;
+}
+.up-down img:hover, .up-down img.selected{
+  @apply cursor-pointer border-2 border-gold text-white bg-red;
+}
+.up-down img.hidden {
+  display: none;
+}
+
+.coming-soon{
+  @apply h-48 flex items-center px-8;
+}
+.coming-soon > *{
+  @apply w-full my-auto text-center font-black text-3xl;
+}
+/* Team Specific */
+
+.team {
   @apply py-32;
 }
 .team .container > div{
   @apply flex flex-row flex-wrap w-full mt-6;
 }
 .team .member{
-  @apply w-full pr-0 pt-10 text-center;
+  @apply pr-0 pt-10 text-center;
 }
-.team .member img{
-  @apply w-full mx-auto mb-6 block max-w-24;
+.team .member .social{
+  @apply mx-auto mb-6 block;
+  max-width: 100px;
+}
+.team .member .social img{
+  @apply ;
+}
+.team .member .social div{
+  @apply mt-2 flex flex-wrap justify-between;
 }
 .team .member p{
   @apply text-sm mt-3;
 }
+
 @screen md {
   .team .member {
-    @apply w-1/2 flex flex-no-wrap text-left pr-24;
+    @apply w-1/2 flex flex-no-wrap text-left pr-12;
   }
-  .team .member img{
-    @apply inline w-20 h-20 p-0 mr-6;
+  .team .member:nth-child(2n + 0){
+    @apply pl-12 pr-0;
+  }
+  .team .member .social{
+    @apply inline p-0 mr-6;
+    @apply !important;
   }
   .team .member > div{
     @apply inline-block;
   }
 }
 
+/* InfoBox specific */
+
+.info-box{
+  @apply flex flex-no-wrap p-4;
+}
+.info-box img{
+  @apply mr-3;
+  width: 1.25rem !important;
+  height: 1.25rem !important;
+}
+.info-box p{
+  @apply text-sm;
+}
+
+/* Press Specific */
 
 .press {
-  @apply bg-grey text-black;
+  @apply bg-grey text-black py-32;
 }
 .press h1, .press h1>img{
   @apply inline;
@@ -109,6 +328,8 @@ i {
   @apply inline;
 }
 
+/* Footer Specific */
+
 .footer{
   @apply py-24 text-xs bg-dark text-white;
 }
@@ -117,4 +338,10 @@ i {
 }
 .footer .container > div {
   @apply mt-8;
+}
+.footer .social-footer{
+  @apply text-right text-2xl
+}
+.footer .social-footer> *{
+  @apply ml-3
 }
