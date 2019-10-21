@@ -46,7 +46,7 @@ class BetPanel extends React.Component {
     const { dai, direction } = state;
 
     return (
-      <div>
+      <div className="bet">
         <InfoBox>
           The price of the tokens only moves between 5% and 20%. If the supply rate is 5% or below,
           LongD is worth nothing. If the price is 20% or above, ShortD is worth nothing.

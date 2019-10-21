@@ -10,7 +10,7 @@ const InfoBox = (props) => {
   const bg = `info-box bg-${bgColor}`;
   return (
     <div className={bg}>
-      <img src={`../assets/images/info-${color}.png`} style={{ width: '1.25rem' }} alt="info" />
+      <img src={`../assets/images/info-${color}.png`} alt="info" />
       <p>{children}</p>
     </div>
   );

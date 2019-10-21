@@ -164,41 +164,27 @@ i:hover{
     @apply text-4xl;
   }
 }
-.hero .tab-container{
+.hero .tab-container {
   @apply my-auto py-8 my-auto w-full;
 }
-.react-tabs {
+.hero .tab-container .tabs {
+  @apply my-0 mx-0 flex p-0 m-0;
+}
+.hero .tab-container .tabs-wrapper {
   -webkit-tap-highlight-color: transparent;
   @apply bg-white text-black p-0 w-full;
 }
-
-.react-tabs__tab-list {
-  @apply my-0 mx-0 flex p-0 m-0;
-}
-
-.react-tabs__tab {
+.hero .tab-container .tabs-wrapper .tab {
   @apply relative uppercase text-center flex-grow p-4 cursor-pointer inline-block border-0 bg-dark;
   @apply text-grey !important;
   list-style: none;
 }
-
-.react-tabs__tab--selected {
-  @apply bg-white border-0 border-t-4 border-gold;
-  @apply text-black !important;
-}
-
-.react-tabs__tab--disabled {
-  color: text-darkgrey;
-  cursor: default;
-}
-
-.react-tabs__tab:focus {
+.hero .tab-container .tabs-wrapper .tab:focus {
   box-shadow: 0 0 5px hsl(208, 99%, 50%);
   border-color: hsl(208, 99%, 50%);
   outline: none;
 }
-
-.react-tabs__tab:focus:after {
+.hero .tab-container .tabs-wrapper .tab:focus:after {
   content: "";
   position: absolute;
   height: 5px;
@@ -207,48 +193,45 @@ i:hover{
   bottom: -5px;
   background: #fff;
 }
-
-.react-tabs__tab-panel {
-  @apply hidden p-4;
+.hero .tab-container .tabs-wrapper .selected {
+  @apply block bg-white border-0 border-t-4 border-gold;
+  @apply text-black !important;
+}
+.hero .tab-container .tabs-wrapper .tab-panel {
+  @apply p-4;
   min-height: 330px;
 }
-.react-tabs__tab-panel p{
+.hero .tab-container .tabs-wrapper .tab-panel p {
   @apply text-sm;
 }
-
-input[type="radio"]{
+.hero .tab-container .tabs-wrapper .tab-panel input[type="radio"] {
   @apply mr-2;
   margin-top: -1px;
   vertical-align: middle;
 }
-.quantity-box div:first-child{
-  @apply mb-4
+.hero .tab-container .tabs-wrapper .tab-panel .hedge button {
+  @apply mt-4;
 }
-.quantity-box input{
+.hero .tab-container .tabs-wrapper .tab-panel .quantity-box input {
   @apply border border-black px-1 mx-1;
   border-radius: 2px;
-
 }
-.react-tabs__tab-panel--selected {
-  display: block;
+.hero .tab-container .tabs-wrapper .tab-panel .up-down img{
+  @apply inline-block my-2 w-10 h-10 mr-2 border-2 border-white;
 }
-
-.up-down img{
-  @apply inline-block my-3 w-10 h-10 mr-3 border-2 border-white;
-}
-.up-down img:hover, .up-down img.selected{
+.hero .tab-container .tabs-wrapper .tab-panel .up-down img:hover, .up-down img.selected{
   @apply cursor-pointer border-2 border-gold text-white bg-red;
 }
-.up-down img.hidden {
+.hero .tab-container .tabs-wrapper .tab-panel .up-down img.hidden {
   display: none;
 }
-
-.coming-soon{
+.hero .tab-container .tabs-wrapper .tab-panel .coming-soon{
   @apply h-48 flex items-center px-8;
 }
-.coming-soon > *{
+.hero .tab-container .tabs-wrapper .tab-panel .coming-soon > *{
   @apply w-full my-auto text-center font-black text-3xl;
 }
+
 /* Team Specific */
 
 .team {
@@ -302,6 +285,7 @@ input[type="radio"]{
   @apply mr-3;
   width: 1.25rem !important;
   height: 1.25rem !important;
+  max-width: 1.25rem !important;
 }
 .info-box p{
   @apply text-sm;
