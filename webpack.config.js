@@ -43,6 +43,10 @@ module.exports = {
         from: 'src/assets',
         to: 'assets'
       },
+      {
+        from: 'src/assets/favicon.ico',
+        to: 'favicon.ico',
+      },
     ]),
     new MiniCssExtractPlugin({
       filename: 'styles.css',

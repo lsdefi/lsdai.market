@@ -185,7 +185,7 @@ class RateHistory extends React.Component {
           </div>
           <div id="rate-history" />
           <div className="subtitle">
-            Get High on Interest
+            &nbsp;
           </div>
         </div>
       </div>

@@ -1,19 +1,25 @@
 module.exports = {
   theme: {
-   backgroundColor: theme => ({
-     ...theme('colors'),
-   }),
-   maxWidth: theme => ({
-     ...theme('spacing'),
-   }),
+    backgroundColor: theme => ({
+      ...theme('colors'),
+    }),
+    maxWidth: theme => ({
+      ...theme('spacing'),
+    }),
+    boxShadow: theme => ({
+      gold: '0px 0px 80px 0px rgba(232, 197, 56, .3)',
+      ...theme('shadow'),
+    }),
     extend: {
       colors:{
         'blue-shadow': '#0000ff30',
         'dark': '#0b0b0b',
         'darkgrey': '#888888',
         'gold': '#e8c538',
+        'goldbg': 'rgba(232, 197, 56, .1)',
         'green': '#4d995a',
         'grey': '#e8e8e8',
+        'light-grey': '#edf2f7',
         'pink-shadow': '#eabd4810',
         'red': '#c81d24',
       },
@@ -52,8 +58,10 @@ module.exports = {
       '6': '1.5rem',
       '7': '1.75rem',
       '8': '2rem',
+      '9': '2.25rem',
       '10': '2.5rem',
       '12': '3rem',
+      '13': '3.25rem',
       '14': '3.5rem',
       '16': '4rem',
       '20': '5rem',

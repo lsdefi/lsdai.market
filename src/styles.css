@@ -83,6 +83,23 @@ i:hover{
 .header .container > img{
   @apply inline h-6;
 }
+.header .logo-container .subtitle {
+  @apply text-2xl ml-20 mt-3;
+  position: absolute;
+}
+.header .subtitle {
+  @apply text-2xl -ml-10 shadow-gold bg-goldbg;
+}
+.header .logo-container img:first-child {
+  @apply -ml-12;
+  position: absolute;
+  top: -0.25rem;
+  opacity: 0.4;
+  z-index: 1;
+}
+.header .logo-container img:nth-child(2) {
+  @apply ml-13 h-12;
+}
 .header .wallet {
   @apply font-lato font-bold uppercase py-3 px-4 bg-transparent border border-black;
   @apply leading-8 text-sm;
@@ -204,17 +221,24 @@ i:hover{
 .hero .tab-container .tabs-wrapper .tab-panel p {
   @apply text-sm;
 }
+.hero .tab-container .tabs-wrapper .tab-panel .hedge button {
+  @apply mt-3;
+}
+.hero .tab-container .tabs-wrapper .tab-panel .quantity-box input {
+  @apply border border-black px-1 mx-1 mt-2;
+  border-radius: 2px;
+}
+.hero .tab-container .tabs-wrapper .tab-panel input[type="text"] {
+  @apply text-center border-grey;
+  border-width: 0 0 1px;
+}
+.hero .tab-container .tabs-wrapper .tab-panel input[type="text"]:focus {
+  @apply bg-pink-shadow;
+}
 .hero .tab-container .tabs-wrapper .tab-panel input[type="radio"] {
   @apply mr-2;
   margin-top: -1px;
   vertical-align: middle;
-}
-.hero .tab-container .tabs-wrapper .tab-panel .hedge button {
-  @apply mt-4;
-}
-.hero .tab-container .tabs-wrapper .tab-panel .quantity-box input {
-  @apply border border-black px-1 mx-1;
-  border-radius: 2px;
 }
 .hero .tab-container .tabs-wrapper .tab-panel .up-down img{
   @apply inline-block my-2 w-10 h-10 mr-2 border-2 border-white;
