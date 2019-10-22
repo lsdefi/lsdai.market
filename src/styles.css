@@ -120,6 +120,13 @@ i:hover{
   z-index: 999;
   transition: 0.5s;
 }
+.drawer .close {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.5rem;
+  font-size: 1.5rem;
+  color: gray;
+}
 .drawer.hidden {
   @apply hidden;
 }

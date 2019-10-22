@@ -10,6 +10,8 @@ class Header extends React.Component {
 
     this.connectWallet = this.connectWallet.bind(this);
     this.open = false;
+
+    window.Header = this;
   }
 
   connectWallet(evt) {
