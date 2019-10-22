@@ -10,6 +10,8 @@ class Header extends React.Component {
 
     this.connectWallet = this.connectWallet.bind(this);
     this.open = false;
+
+    window.Header = this;
   }
 
   connectWallet(evt) {
@@ -41,7 +43,13 @@ class Header extends React.Component {
     return (
       <div className="header">
         <div className="container">
-          <img src="./assets/images/logo-with-writing.jpg" alt="logo" />
+          <div className="logo-container">
+            <img src="./assets/images/new-logo.png" alt="logo" />
+            <img src="./assets/images/LSDai.svg" alt="LSDai" />
+          </div>
+          <div className="subtitle">
+            Get High on Interest
+          </div>
           <button className="wallet" onClick={this.connectWallet} type="button">
             <img src="./assets/images/eth-logo.png" alt="ethereum" className="metamask" />
             <span>{address.length > 0 ? 'My Balances' : 'Connect'}</span>

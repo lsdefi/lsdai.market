@@ -110,7 +110,7 @@ class HedgePanel extends React.Component {
     const lending = side === 'lend';
 
     return (
-      <div>
+      <div className="hedge">
         <p>Protect yourself against wild rate swings</p>
         <div>
           <div className="inline-block m-3">

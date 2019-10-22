@@ -20,6 +20,7 @@ import airswapABI from './abi/airswap';
 import animate from './utils/animate';
 import balance from './utils/balance';
 import erc20 from './abi/erc20';
+import getCurrentGasPrices from './utils/getCurrentGasPrices';
 import notify from './utils/notify';
 
 class App extends React.Component {
@@ -168,6 +169,12 @@ class App extends React.Component {
   }) {
     const { airswap } = this.state;
 
+    const currentGasPrices = await getCurrentGasPrices();
+
+    const transactionParams = {
+      gasPrice: eth.utils.bigNumberify(currentGasPrices.fastest.plus(1000000000).toString()),
+    };
+
     return airswap.fill(
       makerAddress,
       makerAmount,
@@ -180,6 +187,7 @@ class App extends React.Component {
       v,
       r,
       s,
+      transactionParams,
     );
   }
 
