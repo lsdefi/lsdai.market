@@ -83,22 +83,19 @@ i:hover{
 .header .container > img{
   @apply inline h-6;
 }
-.header .logo-container .subtitle {
-  @apply text-2xl ml-20 mt-3;
-  position: absolute;
-}
 .header .subtitle {
-  @apply text-2xl -ml-10 shadow-gold bg-goldbg;
+  @apply ml-18 mt-18;
+  position: absolute;
 }
 .header .logo-container img:first-child {
-  @apply -ml-12;
+  @apply -ml-6 h-72;
   position: absolute;
-  top: -0.25rem;
-  opacity: 0.4;
+  top: 1.5rem;
+  opacity: 0.3;
   z-index: 1;
 }
 .header .logo-container img:nth-child(2) {
-  @apply ml-13 h-12;
+  @apply ml-13 h-10;
 }
 .header .wallet {
   @apply font-lato font-bold uppercase py-3 px-4 bg-transparent border border-black;
@@ -108,6 +105,39 @@ i:hover{
   @apply h-5 inline-block pr-3;
 }
 
+@screen sm {
+  .header .container > img{
+    @apply inline h-6;
+  }
+  .header .logo-container img:first-child {
+    opacity: 0.4;
+  }
+  .header .subtitle {
+    @apply text-xl -ml-10 mt-0 shadow-gold bg-goldbg;
+    position: relative;
+  }
+}
+
+@screen lg {
+  .header .container > img{
+    @apply inline h-6;
+  }
+  .header .subtitle {
+    @apply text-2xl -ml-10 mt-0 shadow-gold bg-goldbg;
+    position: relative;
+  }
+  .header .logo-container img:first-child {
+    @apply -ml-12;
+    height: 400px;
+    position: absolute;
+    top: -0.25rem;
+    opacity: 0.4;
+    z-index: 1;
+  }
+  .header .logo-container img:nth-child(2) {
+    @apply ml-13 h-12;
+  }
+}
 
 /* Drawer Specific */
 
