@@ -3,6 +3,7 @@ import uuid from 'uuid/v4';
 import { ethers } from 'ethers';
 
 import erc20 from './abi/erc20';
+import getCurrentGasPrices from './utils/getCurrentGasPrices';
 import notify from './utils/notify';
 
 window.uuid = uuid;
@@ -42,12 +43,20 @@ class Airswap {
     // if not, approve for max
     if (BigNumber(amountApproved).isLessThan(amount)) {
       notify({
-        dismiss: { duration: 15000 },
+        dismiss: { duration: 45000 },
         message: 'Please approve Airswap\'s exchange to swap tokens on your behalf. This is required to continue.',
         title: 'Please approve...',
         type: 'info',
       });
-      await erc20Contract.approve(airswap, max256);
+
+      const currentGasPrices = await getCurrentGasPrices();
+
+      const transactionParams = {
+        // gasLimit: 200000,
+        gasPrice: ethers.utils.bigNumberify(currentGasPrices.fastest.plus(1000000000).toString()),
+      };
+
+      await erc20Contract.approve(airswap, max256, transactionParams);
     }
   }
 
