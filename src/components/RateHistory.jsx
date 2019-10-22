@@ -108,7 +108,7 @@ class RateHistory extends React.Component {
           pointInterval,
           pointStart,
           color: '#e8c538',
-          lineWidth: 3,
+          lineWidth: 2,
           states: {
             hover: {
               enabled: true,
@@ -117,19 +117,25 @@ class RateHistory extends React.Component {
           },
         },
       },
-      series: [{ data, type: 'spline' }],
+      series: [{ data, name: 'Supply Rate', type: 'spline' }],
       title: { text: '' },
       legend: { enabled: false },
       xAxis: {
         type: 'datetime',
         lineColor: '#4a4a4a',
         lineWidth: 1,
+        gridLineColor: '#1a1a1a',
+        gridLineWidth: 1,
+        tickInterval: 14 * 24 * 3600 * 1000,
+        tickColor: '#4a4a4a',
       },
       yAxis: {
         max: 16,
         lineColor: '#4a4a4a',
-        gridLineColor: '#4a4a4a',
+        gridLineColor: '#1a1a1a',
+        gridLineWidth: 1,
         tickColor: '#4a4a4a',
+        tickInterval: 2.5,
         title: { enabled: false },
         labels: {
           formatter: function formatter() {
@@ -177,16 +183,12 @@ class RateHistory extends React.Component {
               {rateChangeValue}
             </span>
             <br />
-            <span className="text-white text-lg leading-none">
-              DAI Lending Rate
-              <br />
-              on Compound.finance
+            <span className="chart-text">
+              <span>DAI Lending Rate</span>
+              <span>on Compound.finance</span>
             </span>
           </div>
           <div id="rate-history" />
-          <div className="subtitle">
-            &nbsp;
-          </div>
         </div>
       </div>
     );

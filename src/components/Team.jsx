@@ -55,7 +55,7 @@ class Team extends React.Component {
     return (
       <div className="team">
         <div className="container">
-          <h1>Team</h1>
+          <h1>The Team</h1>
           <div>
             {team.map((teamMember) => (
               <TeamMember key={teamMember.name} teamMember={teamMember} />

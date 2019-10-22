@@ -52,7 +52,7 @@ class BetPanel extends React.Component {
           LongD is worth nothing. If the price is 20% or above, ShortD is worth nothing.
         </InfoBox>
 
-        <p className="font-bold font-2xl">I think the cDai lending rate on Compound will go:</p>
+        <p>I think the cDai lending rate on Compound will go:</p>
         <div className="up-down">
           <img
             src="./assets/images/up.svg"
