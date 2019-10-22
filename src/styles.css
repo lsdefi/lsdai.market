@@ -254,6 +254,9 @@ i:hover{
 .hero .tab-container .tabs-wrapper .tab-panel .hedge button {
   @apply mt-2;
 }
+.hero .tab-container .tabs-wrapper .tab-panel .hedge .quantity-box #quantity {
+  @apply w-20;
+}
 .hero .tab-container .tabs-wrapper .tab-panel .quantity-box {
   @apply ml-3;
 }

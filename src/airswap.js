@@ -152,6 +152,7 @@ class Airswap {
       params.takerToken = token;
     }
 
+    await this.approve(params.makerToken, params.makerAmount);
     await this.approve(params.takerToken, params.takerAmount);
 
     const message = {
