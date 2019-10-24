@@ -151,7 +151,9 @@ class RateHistory extends React.Component {
     const { days } = this;
 
     gun.get('historicalRates').once((rates) => {
+      console.log('updating supply rate');
       const last = rates[days - 1] || rate;
+      console.log(days, rates, rates[days - 1], last, rate);
       const rateChange = BigNumber(rate).minus(last).toNumber();
 
       this.setState({ rateChange, supplyRate: rate });
@@ -167,7 +169,7 @@ class RateHistory extends React.Component {
     if (rateChange < 0) {
       rateChangeArrowClass = 'far fa-angle-down';
       rateChangeClass = 'text-red text-base';
-      rateChangeValue = 1 - rateChangeValue;
+      rateChangeValue = 0 - rateChangeValue;
     }
 
     return (

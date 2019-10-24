@@ -20,7 +20,7 @@ const props = {
     longD: '0x19225ba45478e63167ed9ff48430304a55be8e7e',
     shortD: '0xb57cf064b34ebee00826769130b5ae9730f698d7',
   },
-  gun: Gun(),
+  gun: Gun(['http://bot3.lsd.dmvt.io']),
   makerAddress: '0xfac1a9c3a6e8ce4b8f95c97c13d231101b026362',
   max256: '115792089237316195423570985008687907853269984665640564039457584007913129639935',
   network: 'mainnet',
