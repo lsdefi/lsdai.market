@@ -10,6 +10,7 @@ import {
 import BetPanel from './BetPanel';
 import HedgePanel from './HedgePanel';
 import MakeMarketsPanel from './MakeMarketsPanel';
+import InfoBox from './InfoBox';
 
 const Interface = (props) => (
   <div className="tab-container">
@@ -30,6 +31,13 @@ const Interface = (props) => (
         <MakeMarketsPanel {...props} />
       </TabPanel>
     </Tabs>
+    <div className="central-alert rounded">
+      <span className="text-lg">
+        <span className="text-xl">🚧</span>&nbsp;&nbsp;Coming back soon
+        <br /><br />
+        Upgrading to Multi Collateral DAI&nbsp;&nbsp;<span className="text-xl">🛠</span>️
+      </span>
+    </div>
   </div>
 );
 
