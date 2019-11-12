@@ -83,6 +83,20 @@ i:hover{
 .header .container > img{
   @apply inline h-6;
 }
+.header .subtitle {
+  @apply ml-18 mt-18;
+  position: absolute;
+}
+.header .logo-container img:first-child {
+  @apply -ml-6 h-72;
+  position: absolute;
+  top: 1.5rem;
+  opacity: 0.3;
+  z-index: 1;
+}
+.header .logo-container img:nth-child(2) {
+  @apply ml-13 h-10;
+}
 .header .wallet {
   @apply font-lato font-bold uppercase py-3 px-4 bg-transparent border border-black;
   @apply leading-8 text-sm;
@@ -94,17 +108,57 @@ i:hover{
   @apply h-5 inline-block pr-3;
 }
 
+@screen sm {
+  .header .container > img{
+    @apply inline h-6;
+  }
+  .header .logo-container img:first-child {
+    opacity: 0.4;
+  }
+  .header .subtitle {
+    @apply text-xl -ml-10 mt-0 shadow-gold bg-goldbg;
+    position: relative;
+  }
+}
+
+@screen lg {
+  .header .container > img{
+    @apply inline h-6;
+  }
+  .header .subtitle {
+    @apply text-2xl -ml-10 mt-0 shadow-gold bg-goldbg;
+    position: relative;
+  }
+  .header .logo-container img:first-child {
+    @apply -ml-12;
+    height: 400px;
+    position: absolute;
+    top: -0.25rem;
+    opacity: 0.4;
+    z-index: 1;
+  }
+  .header .logo-container img:nth-child(2) {
+    @apply ml-13 h-12;
+  }
+}
 
 /* Drawer Specific */
 
 .drawer {
   @apply h-full flex relative flex-col fixed bg-white text-left py-12;
-  @apply w-80;
+  @apply w-80 font-lato;
   opacity: 0.96;
   top: 0;
   right: 0;
   z-index: 999;
   transition: 0.5s;
+}
+.drawer .close {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.5rem;
+  font-size: 1.5rem;
+  color: gray;
 }
 .drawer.hidden {
   @apply hidden;
@@ -132,7 +186,7 @@ i:hover{
 /* Hero Specific */
 
 .hero {
-  @apply bg-dark text-white py-6;
+  @apply bg-dark text-white py-6 ;
 }
 .hero .container{
   @apply flex flex-row flex-wrap;
@@ -140,11 +194,21 @@ i:hover{
 .hero .chart-container{
   @apply max-h-full mt-4 mx-auto flex items-center;
 }
+.hero .chart-title {
+  @apply pl-8;
+}
 .hero .chart-title span:first-child {
-  @apply text-2xl pr-2;
+  @apply text-4xl pr-2;
 }
 .hero .chart-title i {
   @apply pr-1;
+}
+.hero .chart-text {
+  @apply text-white text-lg leading-none font-lato;
+}
+.hero .chart-text span {
+  @apply block;
+  font-size: 1rem !important;
 }
 .hero #rate-history {
   @apply w-120 my-auto;
@@ -167,41 +231,27 @@ i:hover{
     @apply text-4xl;
   }
 }
-.hero .tab-container{
-  @apply my-auto py-8 my-auto w-full;
+.hero .tab-container {
+  @apply my-auto py-8 my-auto w-full font-lato;
 }
-.react-tabs {
+.hero .tab-container .tabs {
+  @apply my-0 mx-0 flex p-0 m-0;
+}
+.hero .tab-container .tabs-wrapper {
   -webkit-tap-highlight-color: transparent;
   @apply bg-white text-black p-0 w-full;
 }
-
-.react-tabs__tab-list {
-  @apply my-0 mx-0 flex p-0 m-0;
-}
-
-.react-tabs__tab {
+.hero .tab-container .tabs-wrapper .tab {
   @apply relative uppercase text-center flex-grow p-4 cursor-pointer inline-block border-0 bg-dark;
   @apply text-grey !important;
   list-style: none;
 }
-
-.react-tabs__tab--selected {
-  @apply bg-white border-0 border-t-4 border-gold;
-  @apply text-black !important;
-}
-
-.react-tabs__tab--disabled {
-  color: text-darkgrey;
-  cursor: default;
-}
-
-.react-tabs__tab:focus {
+.hero .tab-container .tabs-wrapper .tab:focus {
   box-shadow: 0 0 5px hsl(208, 99%, 50%);
   border-color: hsl(208, 99%, 50%);
   outline: none;
 }
-
-.react-tabs__tab:focus:after {
+.hero .tab-container .tabs-wrapper .tab:focus:after {
   content: "";
   position: absolute;
   height: 5px;
@@ -210,52 +260,81 @@ i:hover{
   bottom: -5px;
   background: #fff;
 }
-
-.react-tabs__tab-panel {
-  @apply hidden p-4;
-  min-height: 330px;
+.hero .tab-container .tabs-wrapper .selected {
+  @apply block bg-white border-0 border-t-4 border-gold;
+  @apply text-black !important;
 }
-.react-tabs__tab-panel p{
+.hero .tab-container .tabs-wrapper .tab-panel {
+  @apply p-4;
+  min-height: 330px;
   @apply text-sm;
 }
-
-input[type="radio"]{
+.hero .tab-container .tabs-wrapper .tab-panel .bet .info-box {
+  @apply mb-3;
+}
+.hero .tab-container .tabs-wrapper .tab-panel .bet p {
+  @apply ml-3 py-2;
+}
+.hero .tab-container .tabs-wrapper .tab-panel .bet button {
+  @apply -mt-px;
+}
+.hero .tab-container .tabs-wrapper .tab-panel .bet .info-box p {
+  @apply ml-0 py-0;
+}
+.hero .tab-container .tabs-wrapper .tab-panel .hedge p:first-child {
+  @apply my-2 ml-3 text-xs font-light;
+}
+.hero .tab-container .tabs-wrapper .tab-panel .hedge button {
+  @apply mt-2;
+}
+.hero .tab-container .tabs-wrapper .tab-panel .hedge .quantity-box #quantity {
+  @apply w-20;
+}
+.hero .tab-container .tabs-wrapper .tab-panel .quantity-box {
+  @apply ml-3;
+}
+.hero .tab-container .tabs-wrapper .tab-panel .quantity-box input {
+  @apply border border-black px-1 mx-1 mt-2;
+  border-radius: 2px;
+}
+.hero .tab-container .tabs-wrapper .tab-panel input[type="text"] {
+  @apply text-center border-grey;
+  border-width: 0 0 1px;
+}
+.hero .tab-container .tabs-wrapper .tab-panel input[type="text"]:focus {
+  @apply bg-pink-shadow;
+}
+.hero .tab-container .tabs-wrapper .tab-panel input[type="radio"] {
   @apply mr-2;
   margin-top: -1px;
   vertical-align: middle;
 }
-.quantity-box div:first-child{
-  @apply mb-4
+.hero .tab-container .tabs-wrapper .tab-panel .up-down {
+  @apply -mb-2 ml-2;
 }
-.quantity-box input{
-  @apply border border-black px-1 mx-1;
-  border-radius: 2px;
-
+.hero .tab-container .tabs-wrapper .tab-panel .up-down img{
+  @apply inline-block my-2 w-10 h-8 mr-2 border-2 border-white;
 }
-.react-tabs__tab-panel--selected {
-  display: block;
+.hero .tab-container .tabs-wrapper .tab-panel .up-down img:hover, .up-down img.selected{
+  @apply cursor-pointer text-white;
 }
-
-.up-down img{
-  @apply inline-block my-3 w-10 h-10 mr-3 border-2 border-white;
-}
-.up-down img:hover, .up-down img.selected{
-  @apply cursor-pointer border-2 border-gold text-white bg-red;
-}
-.up-down img.hidden {
+.hero .tab-container .tabs-wrapper .tab-panel .up-down img.hidden {
   display: none;
 }
-
-.coming-soon{
+.hero .tab-container .tabs-wrapper .tab-panel .coming-soon{
   @apply h-48 flex items-center px-8;
 }
-.coming-soon > *{
+.hero .tab-container .tabs-wrapper .tab-panel .coming-soon > *{
   @apply w-full my-auto text-center font-black text-3xl;
 }
+
 /* Team Specific */
 
 .team {
   @apply py-32;
+}
+.team h1 {
+  @apply font-light;
 }
 .team .container > div{
   @apply flex flex-row flex-wrap w-full mt-6;
@@ -265,16 +344,23 @@ input[type="radio"]{
 }
 .team .member .social{
   @apply mx-auto mb-6 block;
-  max-width: 100px;
+  width: 100px;
 }
 .team .member .social img{
-  @apply ;
+  @apply object-cover;
+  width: 100px !important;
+  height: 100px !important;
+  max-width: 100px !important;
 }
 .team .member .social div{
-  @apply mt-2 flex flex-wrap justify-between;
+  @apply flex flex-wrap justify-between;
 }
-.team .member p{
-  @apply text-sm mt-3;
+.team .member .social i {
+  @apply text-sm;
+}
+.team .member p {
+  @apply mt-3 font-light font-lato;
+  font-size: 0.78rem;
 }
 
 @screen md {
@@ -325,6 +411,7 @@ input[type="radio"]{
   @apply mr-3;
   width: 1.25rem !important;
   height: 1.25rem !important;
+  max-width: 1.25rem !important;
 }
 .info-box p{
   @apply text-sm;

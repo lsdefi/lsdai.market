@@ -6,9 +6,9 @@ const MakeMarketsPanel = () => (
   <div>
     <InfoBox>
       Contact us on&nbsp;
-      <a href="/" target="_blank">Telegram</a>
+      <a href="https://t.me/lsdai" target="_blank" rel="noopener noreferrer">Telegram</a>
       &nbsp;or&nbsp;
-      <a href="/" target="_blank">Intercom</a>
+      <a href="/" onClick={window.showIntercom}>Intercom</a>
       &nbsp;if you&apos;d like instructions on how to make your own
       markets immediately.
     </InfoBox>

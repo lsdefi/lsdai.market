@@ -3,7 +3,7 @@ import React from 'react';
 import BigNumber from 'bignumber.js';
 import InfoBox from './InfoBox';
 
-import { spin } from '../utils/animate';
+import { animateOut, spin } from '../utils/animate';
 
 class Drawer extends React.Component {
   constructor(props) {
@@ -24,6 +24,12 @@ class Drawer extends React.Component {
       sellOrder,
       shortDBalance,
     } = props;
+
+    const close = (evt) => {
+      evt.preventDefault();
+      window.Header.open = false;
+      animateOut('.drawer', 'slideOutRight', 'faster');
+    };
 
     const placeHedgeOrderDai = async () => {
       spin('.daiIcon', true);
@@ -72,6 +78,9 @@ class Drawer extends React.Component {
     return (
       <div className="drawer hidden">
         <div>
+          <a href="/" alt="close" onClick={close} className="close">
+            <i className="fal fa-window-close" />
+          </a>
           <div className="top">
             <h1>Balances</h1>
             <span className="text-green text-xs">{address}</span>

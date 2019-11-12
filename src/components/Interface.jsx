@@ -1,44 +1,80 @@
 import React from 'react';
 
-import {
-  Tab,
-  TabList,
-  TabPanel,
-  Tabs,
-} from 'react-tabs';
-
 import BetPanel from './BetPanel';
 import HedgePanel from './HedgePanel';
 import MakeMarketsPanel from './MakeMarketsPanel';
 import InfoBox from './InfoBox';
 
-const Interface = (props) => (
-  <div className="tab-container">
-    <Tabs>
-      <TabList>
-        <Tab>Hedge</Tab>
-        <Tab>Bet</Tab>
-        <Tab>Make Markets</Tab>
-      </TabList>
+class Interface extends React.Component {
+  constructor(props) {
+    super(props);
 
-      <TabPanel>
-        <HedgePanel {...props} />
-      </TabPanel>
-      <TabPanel>
-        <BetPanel {...props} />
-      </TabPanel>
-      <TabPanel>
-        <MakeMarketsPanel {...props} />
-      </TabPanel>
-    </Tabs>
-    <div className="central-alert rounded">
-      <span className="text-lg">
-        <span className="text-xl">🚧</span>&nbsp;&nbsp;Coming back soon
-        <br /><br />
-        Upgrading to Multi Collateral DAI&nbsp;&nbsp;<span className="text-xl">🛠</span>️
-      </span>
-    </div>
-  </div>
-);
+    this.state = {
+      tab: 'hedge',
+    };
+
+    this.bet = this.bet.bind(this);
+    this.hedge = this.hedge.bind(this);
+    this.make = this.make.bind(this);
+  }
+
+  bet() {
+    this.setState({ tab: 'bet' });
+  }
+
+  hedge() {
+    this.setState({ tab: 'hedge' });
+  }
+
+  make() {
+    this.setState({ tab: 'make' });
+  }
+
+  render() {
+    const {
+      bet,
+      hedge,
+      make,
+      props,
+      state,
+    } = this;
+    const { tab } = state;
+
+    return (
+      <div className="tab-container">
+        <div className="tabs-wrapper">
+          <ul className="tabs">
+            <li className={tab === 'hedge' ? 'tab selected' : 'tab'} onClick={hedge}>
+              Hedge
+            </li>
+            <li className={tab === 'bet' ? 'tab selected' : 'tab'} onClick={bet}>
+              Bet
+            </li>
+            <li className={tab === 'make' ? 'tab selected' : 'tab'} onClick={make}>
+              Make Markets
+            </li>
+          </ul>
+
+          <div className={tab === 'hedge' ? 'tab-panel' : 'hidden'}>
+            <HedgePanel {...props} />
+          </div>
+          <div className={tab === 'bet' ? 'tab-panel' : 'hidden'}>
+            <BetPanel {...props} />
+          </div>
+          <div className={tab === 'make' ? 'tab-panel' : 'hidden'}>
+            <MakeMarketsPanel {...props} />
+          </div>
+        </div>
+        <div className="central-alert rounded">
+          <span className="text-lg">
+            <span className="text-xl">🚧</span>&nbsp;&nbsp;Coming back soon
+            <br /><br />
+            Upgrading to Multi Collateral DAI&nbsp;&nbsp;<span className="text-xl">🛠</span>️
+          </span>
+        </div>
+      </div>
+    );
+  }
+}
 
 export default Interface;
