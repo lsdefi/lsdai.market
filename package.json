@@ -59,7 +59,7 @@
     "ethers": "^4.0.38",
     "fortmatic": "^0.8.2",
     "gun": "^0.2019.930",
-    "highcharts": "^7.2.0",
+    "highcharts": "^9.0.0",
     "prop-types": "^15.7.2",
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
